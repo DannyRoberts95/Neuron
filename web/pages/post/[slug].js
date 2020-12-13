@@ -9,6 +9,7 @@ function urlFor (source) {
 }
 
 const Post = (props) => {
+  console.log(props)
   const {
     title = 'Missing title',
     name = 'Missing name',
