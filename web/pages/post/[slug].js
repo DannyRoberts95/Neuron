@@ -15,6 +15,7 @@ const Post = (props) => {
     name = 'Missing name',
     categories,
     authorImage,
+    mainImage,
     body = []
   } = props
   return (
@@ -26,6 +27,21 @@ const Post = (props) => {
           Posted in
           {categories.map(category => <li key={category}>{category}</li>)}
         </ul>
+      )}
+
+      {mainImage && (
+        <div>
+          <figure style={{margin:0}}>
+          <img
+          // width="100%"
+            src={urlFor(mainImage[0])
+              .height(Math.floor((9 / 16) * 2000))
+              .fit('crop')
+              .auto('format')
+              .url()}
+          />
+          </figure>
+        </div>
       )}
       {authorImage && (
         <div>
@@ -50,6 +66,10 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "name": author->name,
   "categories": categories[]->title,
   "authorImage": author->image,
+  "mainImage": mainImage=>image,
+  publishedAt,
+  _updatedAt,
+
   body
 }`
 
