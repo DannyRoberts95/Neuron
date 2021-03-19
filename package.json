@@ -7,5 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@ap.cx/react-fullpage": "^0.2.0",
+    "@fullpage/react-fullpage": "^0.1.19",
+    "react-fullpage": "^0.1.19"
+  }
 }
