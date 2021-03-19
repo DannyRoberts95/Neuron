@@ -21,12 +21,12 @@ const Index = (props) => {
               </li>
             )
         )}
-        <h1>Posts</h1>
+        <h1>Projects</h1>
         {projects.map(
           ({ _id, title = '', slug = '', _updatedAt = '' }) =>
             slug && (
               <li key={_id}>
-                <Link href="/post/[slug]" as={`/post/${slug.current}`}>
+                <Link href="/project/[slug]" as={`/project/${slug.current}`}>
                   <a>{title}</a>
                 </Link>{' '}
                 ({new Date(_updatedAt).toDateString()})
