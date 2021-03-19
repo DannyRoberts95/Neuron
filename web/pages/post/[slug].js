@@ -33,7 +33,7 @@ const Post = (props) => {
         <div>
           <figure style={{margin:0}}>
           <img
-          // width="100%"
+          width="100%"
             src={urlFor(mainImage[0])
               .height(Math.floor((9 / 16) * 2000))
               .fit('crop')
