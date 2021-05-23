@@ -38,13 +38,14 @@ const Index = (props) => {
     <ReactFullpage
       scrollOverflow={true}
       onLeave={() => console.log("scroll")}
-      afterLoad={() => console.log("scroll")}
+      // afterLoad={() => console.log("scroll")}
       render={({ fullpageApi }) => {
         return (
           <div>
-            <div className="section">{projectLinks}</div>
-            <div className="section">{postLinks}</div>
-            <div className="section">
+            <div className="section" style={{backgroundColor:"red"}}>{projectLinks}</div>
+            <div className="section" style={{backgroundColor:"blue"}}>{postLinks}</div>
+            <div className="section" style={{backgroundColor:"purple"}}>section 3</div>
+            <div className="section" style={{backgroundColor:"yellow"}}>
               <h3>Section 3</h3>
               <button onClick={() => fullpageApi.moveTo(1, 0)}>Move top</button>
             </div>
