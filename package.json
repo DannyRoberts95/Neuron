@@ -1,18 +1,51 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@ap.cx/react-fullpage": "^0.2.0",
-    "@fullpage/react-fullpage": "^0.1.19",
-    "@react-three/fiber": "^6.2.0",
-    "react-fullpage": "^0.1.19",
-    "three": "^0.128.0"
-  }
+    "name": "blog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --fix .",
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./**/*.{js,jsx,ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@ap.cx/react-fullpage": "^0.2.0",
+        "@fullpage/react-fullpage": "^0.1.19",
+        "@material-ui/core": "^4.11.2",
+        "@react-three/fiber": "^6.2.0",
+        "@sanity/block-content-to-react": "^2.0.7",
+        "@sanity/client": "^2.1.0",
+        "@sanity/image-url": "^0.140.19",
+        "client": "^0.0.1",
+        "groq": "^2.0.9",
+        "next": "^10.0.3",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-fullpage": "^0.1.19",
+        "sanity": "^2.2.6",
+        "three": "^0.128.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.27.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-react": "^7.23.2",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "husky": "^6.0.0",
+        "prettier": "^2.3.0"
+    }
 }
