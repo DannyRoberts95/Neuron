@@ -1,6 +1,5 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-// import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from 'src/themes/theme';
 
 class MyDocument extends Document {
@@ -10,12 +9,14 @@ class MyDocument extends Document {
                 <Head>
                     {/* PWA primary color */}
                     <meta name="theme-color" content={theme.palette.primary.main} />
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                     <link
+                        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Source+Code+Pro:wght@300;700&display=swap"
                         rel="stylesheet"
-                        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                     />
                 </Head>
-                <body>
+                <body style={{ margin: 0 }}>
                     <Main />
                     <NextScript />
                 </body>

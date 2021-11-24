@@ -12,7 +12,7 @@ export default function BoxesPage() {
                 <Box position={[-10, 0, 0]} />
                 <Box position={[0, 10, 0]} />
                 <Box position={[0, -10, 0]} />
-                <OrbitControls />
+                {/* <OrbitControls /> */}
             </Canvas>
         </div>
     );
