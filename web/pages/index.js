@@ -3,6 +3,7 @@ import Link from 'next/link';
 import groq from 'groq';
 import client from '../client';
 import BoxesPage from './boxes';
+import PostList from '@/components/PostList';
 
 const Index = (props) => {
     const { posts = [] } = props;
@@ -34,19 +35,29 @@ const Index = (props) => {
 
     return (
         <div>
-            <div className="section">
+            {/* <div className="section">
                 <BoxesPage />
-            </div>
-            <div className="section">{projectLinks}</div>
-            <div className="section">{postLinks}</div>
+            </div> */}
+
+            <PostList posts={posts} />
+            {/* <div className="section">{projectLinks}</div>
+            <div className="section">{postLinks}</div> */}
         </div>
     );
 };
 
 Index.getInitialProps = async () => ({
     posts: await client.fetch(groq`
-      *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
-    `),
+    *[_type == "post" && publishedAt < now()]{ title,
+        slug,
+      "name": author->name,
+      "categories": categories[]->title,
+      "authorImage": author->image,
+      "mainImage": mainImage=>image,
+      publishedAt,
+      _updatedAt,
+      body}|order(publishedAt desc)
+  `),
     projects: await client.fetch(groq`
       *[_type == "project" && publishedAt < now()]|order(publishedAt desc)
     `)

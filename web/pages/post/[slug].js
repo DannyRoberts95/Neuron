@@ -79,7 +79,6 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "mainImage": mainImage=>image,
   publishedAt,
   _updatedAt,
-
   body
 }`;
 
