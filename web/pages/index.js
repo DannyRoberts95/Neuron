@@ -4,6 +4,7 @@ import groq from 'groq';
 import client from '../client';
 import BoxesPage from './boxes';
 import PostList from '@/components/PostList';
+import Layout from '@/Layouts/Layout';
 
 const Index = (props) => {
     const { posts = [] } = props;
@@ -62,5 +63,7 @@ Index.getInitialProps = async () => ({
       *[_type == "project" && publishedAt < now()]|order(publishedAt desc)
     `)
 });
+
+Index.Layout = Layout;
 
 export default Index;

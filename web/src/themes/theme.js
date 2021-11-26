@@ -1,4 +1,5 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { orange } from '@mui/material/colors';
 
 const headerFont = 'Orbitron, monospace';
 const bodyFont = 'Source Code Pro, monospace';
@@ -6,6 +7,7 @@ const bodyFont = 'Source Code Pro, monospace';
 let theme = createTheme({
     palette: {
         // mode: 'dark'
+        primary: { main: orange[900] }
     },
     breakpoints: {
         values: { xs: 600, sm: 800, md: 1000, lg: 1200, xl: 1536 }
