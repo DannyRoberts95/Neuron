@@ -1,20 +1,32 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 
+const primaryColor = orange[900];
+
 const headerFont = 'Orbitron, monospace';
 const bodyFont = 'Source Code Pro, monospace';
+
+let defaultTheme = createTheme();
+
+const borderLeftProps = {
+    borderLeft: `4px solid`,
+    borderColor: primaryColor,
+    paddingLeft: defaultTheme.spacing(2)
+};
 
 let theme = createTheme({
     palette: {
         // mode: 'dark',
-        primary: { main: orange[900] }
+        primary: { main: primaryColor }
     },
     breakpoints: {
         values: { xs: 600, sm: 800, md: 1000, lg: 1200, xl: 1536 }
     },
     typography: {
         fontFamily: bodyFont,
-        h1: { fontFamily: headerFont },
+        h1: {
+            fontFamily: headerFont
+        },
         h2: { fontFamily: headerFont },
         h3: { fontFamily: headerFont },
         h4: { fontFamily: headerFont },

@@ -6,12 +6,12 @@ import client from '../../client';
 import StyledBlockedContent from '@/components/StyledBlockedContent';
 import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
-import { Body2, H1 } from '@/components/Typography';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
+import { format } from 'date-fns';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -55,17 +55,16 @@ const Post = (props) => {
                 )}
 
                 <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
-                    <H1>{title}</H1>
-                    <Body2>{new Date(publishedAt).toDateString()}</Body2>
+                    <Typography variant="h1">{title}</Typography>
+                    <Typography variant="body2">
+                        {format(new Date(publishedAt), 'dd.MM.yy')}
+                    </Typography>
                     <Author author={name} src={urlFor(authorImage).width(50).url()} />
                     <TagStack tags={categories} />
                     <Box my={4}>
                         <Divider />
                     </Box>
-                    <StyledBlockedContent
-                        body={body}
-                        // imageOptions={{ w: 100, h: 240, fit: 'max' }}
-                    />
+                    <StyledBlockedContent body={body} />
                 </CenteredContent>
             </article>
         </PageBaseContainer>

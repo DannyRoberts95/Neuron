@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
-import { Body2 } from './Typography';
+
 import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
 export default function Author(props) {
     const { author, src } = props;
@@ -11,7 +12,7 @@ export default function Author(props) {
                 <Box sx={{ borderRadius: '50%' }} overflow="hidden" mr={2}>
                     <img alt="authorImage" src={src} />
                 </Box>
-                <Body2>By {author}</Body2>
+                <Typography variant="body2">By {author}</Typography>
             </Stack>
         </Box>
     );

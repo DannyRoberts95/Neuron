@@ -3,8 +3,8 @@ import groq from 'groq';
 import client from '../client';
 import Layout from '@/Layouts/Layout';
 import ProjectList from '@/components/ProjectList';
-import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
 const ProjectPage = (props) => {
     const { projects = [] } = props;
