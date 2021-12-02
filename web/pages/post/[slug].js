@@ -11,6 +11,7 @@ import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
 import { Divider } from '@mui/material';
 import { Box } from '@mui/system';
+import Layout from '@/Layouts/Layout';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -88,4 +89,5 @@ Post.getInitialProps = async function (context) {
     return await client.fetch(query, { slug });
 };
 
+Post.Layout = Layout;
 export default Post;

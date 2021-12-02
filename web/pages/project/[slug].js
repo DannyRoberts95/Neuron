@@ -3,6 +3,7 @@ import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
+import Layout from '@/Layouts/Layout';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -78,4 +79,5 @@ Project.getInitialProps = async function (context) {
     return await client.fetch(query, { slug });
 };
 
+Project.Layout = Layout;
 export default Project;

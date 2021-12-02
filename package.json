@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start studio":"cd studio && sanity start ",
-        "start web":"cd web && npm run dev ",
+        "start studio": "cd studio && sanity start ",
+        "start web": "cd web && npm run dev ",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint --fix .",
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"

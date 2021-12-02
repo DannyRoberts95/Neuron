@@ -5,9 +5,8 @@ import Fab from '@mui/material/Fab';
 import { Box, Drawer, Grow, Stack, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material';
 import { Close } from '@mui/icons-material';
-
-// import Link from 'next/link';
 import Link from '@/components/Link';
+import links from '@/Consts/SITE_LINKS';
 
 export default function ApplicationBar(props) {
     const theme = useTheme();
@@ -22,8 +21,6 @@ export default function ApplicationBar(props) {
     const handleClose = () => {
         setMenuOpen(false);
     };
-
-    const links = ['Home', 'About', 'Contact', 'Posts', 'Projects'];
 
     const drawerTransitionTime = 400;
 
@@ -48,8 +45,7 @@ export default function ApplicationBar(props) {
                 anchor={'right'}
                 open={menuOpen}
                 transitionDuration={drawerTransitionTime}
-                onClose={handleClose}
-                onOpen={handleOpen}>
+                onClose={handleClose}>
                 <Box
                     sx={{ width: '100vw', height: '100vh' }}
                     display="flex"
@@ -58,20 +54,20 @@ export default function ApplicationBar(props) {
                     <Stack justifyContent="center" spacing={4}>
                         {links.map((link, i) => (
                             <Grow
-                                key={link}
+                                key={link.title + i}
                                 in={menuOpen}
                                 timeout={Math.min(
                                     drawerTransitionTime + i * drawerTransitionTime,
                                     1250
                                 )}>
                                 <Typography
-                                    sx={{ textDecoration: 'none' }}
+                                    sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
                                     variant={'subtitle1'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}
-                                    href="#">
-                                    {link}
+                                    href={link.href}>
+                                    {link.title}
                                 </Typography>
                             </Grow>
                         ))}

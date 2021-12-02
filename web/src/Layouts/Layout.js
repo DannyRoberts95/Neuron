@@ -5,7 +5,7 @@ import ApplicationBar from '@/components/ApplicationBar';
 export default function Layout(props) {
     const { children } = props;
     return (
-        <Box p={2}>
+        <Box>
             <ApplicationBar />
             {children}
         </Box>
