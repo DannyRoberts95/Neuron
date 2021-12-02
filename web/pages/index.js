@@ -1,5 +1,5 @@
 import React from 'react';
-import BoxesPage from './boxes';
+import BoxesPage from '../src/components/boxes';
 import Layout from '@/Layouts/Layout';
 
 const Index = () => {

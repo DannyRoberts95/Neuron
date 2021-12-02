@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
-import Stack from '@mui/material/Stack';
+import { Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
 
 import TagStack from '@/components/TagStack';
 import SanityNextImage from './SanityNextImage';
 import format from 'date-fns/format';
-
-import Reorder from '@mui/icons-material/Reorder';
+import { Reorder } from '@mui/icons-material';
 
 const PostCard = (props) => {
-
     const { title = '', slug, publishedAt = '', mainImage, categories } = props.post;
+    const [hovered, setHovered] = useState(false);
 
     return (
         slug && (
-            <Card raised component={Link} naked href={`/post/${slug.current}`}>
-                <CardActionArea>
+            <Card
+                variant="elevation"
+                elevation={2}
+                component={Link}
+                naked
+                href={`/post/${slug.current}`}>
+                <CardActionArea
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}>
                     <SanityNextImage
                         img={mainImage[0]}
                         alt={`${title}_main_image`}
@@ -24,22 +29,28 @@ const PostCard = (props) => {
                         height={150}
                         width={225}
                     />
-                    <CardContent>
-                        <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <CardContent
+                        sx={{
+                            backgroundColor: 'background.paper',
+                            transition: 'all 0.25s',
+                            color: hovered ? 'primary.main' : 'inherit'
+                        }}>
+                        <Typography variant="body2" gutterBottom>
                             {format(new Date(publishedAt), 'dd.MM.yy')}
                         </Typography>
 
                         <Typography variant="h6" component="div">
                             {title}
                         </Typography>
+
                         <TagStack tags={categories} />
 
-                        {/* <Stack direction="row-reverse" spacing={1}>
+                        <Stack direction="row-reverse" spacing={1}>
                             <Typography gutterBottom variant="button">
                                 READ
                             </Typography>
                             <Reorder />
-                        </Stack> */}
+                        </Stack>
                     </CardContent>
                 </CardActionArea>
             </Card>

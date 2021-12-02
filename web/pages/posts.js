@@ -1,53 +1,24 @@
 import React from 'react';
-import Link from 'next/link';
 import groq from 'groq';
 import client from '../client';
-import BoxesPage from './boxes';
 import PostList from '@/components/PostList';
 import Layout from '@/Layouts/Layout';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
-const Index = (props) => {
+const Posts = (props) => {
     const { posts = [] } = props;
-    const { projects = [] } = props;
-
-    const postLinks = posts.map(
-        ({ _id, title = '', slug = '', _updatedAt = '' }) =>
-            slug && (
-                <li key={_id}>
-                    <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-                        <a>{title}</a>
-                    </Link>{' '}
-                    ({new Date(_updatedAt).toDateString()})
-                </li>
-            )
-    );
-
-    const projectLinks = projects.map(
-        ({ _id, title = '', slug = '', _updatedAt = '' }) =>
-            slug && (
-                <li key={_id}>
-                    <Link href="/project/[slug]" as={`/project/${slug.current}`}>
-                        <a>{title}</a>
-                    </Link>{' '}
-                    ({new Date(_updatedAt).toDateString()})
-                </li>
-            )
-    );
-
     return (
-        <div>
-            {/* <div className="section">
-                <BoxesPage />
-            </div> */}
-
+        <Box sx={{ backgroundColor: 'background.default' }} p={2}>
+            <Typography variant="h1" gutterBottom>
+                Posts
+            </Typography>
             <PostList posts={posts} />
-            {/* <div className="section">{projectLinks}</div>
-            <div className="section">{postLinks}</div> */}
-        </div>
+        </Box>
     );
 };
 
-Index.getInitialProps = async () => ({
+Posts.getInitialProps = async () => ({
     posts: await client.fetch(groq`
     *[_type == "post" && publishedAt < now()]{ title,
         slug,
@@ -64,6 +35,6 @@ Index.getInitialProps = async () => ({
     `)
 });
 
-Index.Layout = Layout;
+Posts.Layout = Layout;
 
-export default Index;
+export default Posts;

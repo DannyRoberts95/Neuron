@@ -15,7 +15,7 @@ export default function TagStack(props) {
     return (
         <Stack direction="row" spacing={1} {...others}>
             {tags.map((tag, i) => (
-                <Typography key={tag} variant="overline" color="textSecondary">
+                <Typography key={tag} variant="overline" color="inherit">
                     {tag}
                     {i !== tags.length - 1 && bull}
                 </Typography>

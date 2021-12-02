@@ -12,9 +12,7 @@ const PostList = (props) => {
     ));
 
     return (
-        <Grid container direction="row" spacing={4}>
-            {postLinks}
-            {postLinks}
+        <Grid container direction="row" spacing={2}>
             {postLinks}
         </Grid>
     );

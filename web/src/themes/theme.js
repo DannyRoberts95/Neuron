@@ -6,6 +6,7 @@ const bodyFont = 'Source Code Pro, monospace';
 
 let theme = createTheme({
     palette: {
+        // mode: 'dark',
         primary: { main: orange[900] }
     },
     breakpoints: {
