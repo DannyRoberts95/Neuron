@@ -29,7 +29,7 @@ export default function ApplicationBar(props) {
             <Fab
                 size="small"
                 sx={{
-                    borderRadius: 1,
+                    borderRadius: '50%',
                     position: 'fixed',
                     zIndex: theme.zIndex.modal + 1,
                     right: 16,

@@ -58,7 +58,7 @@ function HeroImage(props) {
                         {open ? <Close /> : <CameraAlt />}
                     </IconButton>
                     <Fade in={open && caption}>
-                        <Typography variant="body2">`{caption}`</Typography>
+                        <Typography variant="body1">{caption}</Typography>
                     </Fade>
                 </Stack>
             </Hidden>
