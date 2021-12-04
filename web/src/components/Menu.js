@@ -1,4 +1,3 @@
-
 import React, { Fragment, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Fab from '@mui/material/Fab';
@@ -48,7 +47,7 @@ export default function ApplicationBar(props) {
                 transitionDuration={drawerTransitionTime}
                 onClose={handleClose}>
                 <Box
-                    sx={{ width: '100vw', height: '100vh' }}
+                    sx={{ width: '100vw', height: '100vh', backgroundColor: 'background.default' }}
                     display="flex"
                     alignItems="center"
                     justifyContent="center">

@@ -16,7 +16,7 @@ class MyDocument extends Document {
                         rel="stylesheet"
                     />
                 </Head>
-                <body style={{ margin: 0 }}>
+                <body style={{ margin: 0, backgroundColor: theme.palette.background.default }}>
                     <Main />
                     <NextScript />
                 </body>

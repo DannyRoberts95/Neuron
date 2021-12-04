@@ -3,19 +3,18 @@ import groq from 'groq';
 import client from '../client';
 import Layout from '@/Layouts/Layout';
 import ProjectList from '@/components/ProjectList';
-import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 const ProjectPage = (props) => {
     const { projects = [] } = props;
 
     return (
-        <Box sx={{ backgroundColor: 'background.default' }} p={2}>
+        <Container maxWidth={false}>
             <Typography variant="h1" gutterBottom>
                 Projects
             </Typography>
             <ProjectList projects={projects} />
-        </Box>
+        </Container>
     );
 };
 

@@ -3,18 +3,17 @@ import groq from 'groq';
 import client from '../client';
 import PostList from '@/components/PostList';
 import Layout from '@/Layouts/Layout';
-import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 const Posts = (props) => {
     const { posts = [] } = props;
     return (
-        <Box sx={{ backgroundColor: 'background.default' }} p={2}>
+        <Container maxWidth={false}>
             <Typography variant="h1" gutterBottom>
                 Posts
             </Typography>
             <PostList posts={posts} />
-        </Box>
+        </Container>
     );
 };
 
@@ -28,7 +27,7 @@ Posts.getInitialProps = async () => ({
       "mainImage": mainImage=>image,
       publishedAt,
       _updatedAt,
-      body}|order(publishedAt desc)
+      }|order(publishedAt desc)
   `),
     projects: await client.fetch(groq`
       *[_type == "project" && publishedAt < now()]|order(publishedAt desc)

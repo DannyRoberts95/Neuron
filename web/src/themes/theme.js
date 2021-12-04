@@ -1,18 +1,13 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
+import { orange, green } from '@mui/material/colors';
 
-const primaryColor = orange[900];
+const primaryColor = green['600'];
 
 const headerFont = 'Orbitron, monospace';
 const bodyFont = 'Source Code Pro, monospace';
 
 let defaultTheme = createTheme();
 
-const borderLeftProps = {
-    borderLeft: `4px solid`,
-    borderColor: primaryColor,
-    paddingLeft: defaultTheme.spacing(2)
-};
 
 let theme = createTheme({
     palette: {
