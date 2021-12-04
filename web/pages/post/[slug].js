@@ -32,13 +32,15 @@ const Post = (props) => {
     return (
         <PageBaseContainer>
             <article width="100%">
+                
                 {mainImage && (
                     <div>
                         <figure
                             style={{
                                 margin: 0,
                                 overflow: 'hidden',
-                                maxWidth: '100%'
+                                maxWidth: '100%',
+                                height: '75vh'
                             }}>
                             <img
                                 alt={title}
@@ -59,6 +61,7 @@ const Post = (props) => {
                     <Typography variant="body2">
                         {format(new Date(publishedAt), 'dd.MM.yy')}
                     </Typography>
+
                     <Author author={name} src={urlFor(authorImage).width(50).url()} />
                     <TagStack tags={categories} />
                     <Box my={4}>
