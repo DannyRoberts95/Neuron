@@ -28,10 +28,7 @@ Posts.getInitialProps = async () => ({
       publishedAt,
       _updatedAt,
       }|order(publishedAt desc)
-  `),
-    projects: await client.fetch(groq`
-      *[_type == "project" && publishedAt < now()]|order(publishedAt desc)
-    `)
+  `)
 });
 
 Posts.Layout = Layout;

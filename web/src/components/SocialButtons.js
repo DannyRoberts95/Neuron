@@ -1,5 +1,6 @@
 import { Email, FacebookOutlined, Reddit, Twitter, WhatsApp } from '@mui/icons-material';
 import { Stack, Typography } from '@mui/material';
+
 import React from 'react';
 import {
     EmailShareButton,
@@ -10,6 +11,7 @@ import {
 } from 'react-share';
 
 export default function SocialButtons(props) {
+    if (typeof window == 'undefined') return null;
     const { url = window ? window.location.href : '' } = props;
     const hashTags = '#neuron';
     return (

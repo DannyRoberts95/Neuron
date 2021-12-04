@@ -16,6 +16,7 @@ import { format } from 'date-fns';
 import HeroImage from '@/components/HeroImage';
 import SocialButtons from '@/components/SocialButtons';
 import { useTheme } from '@emotion/react';
+import RecentPostList from '@/components/RecentPostList';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -70,7 +71,21 @@ const Post = (props) => {
                         <Box my={2}>
                             <Divider />
                         </Box>
+
                         <StyledBlockedContent body={body} />
+
+                        <Box mb={2}>
+                            <SocialButtons />
+                        </Box>
+                        <Box my={2}>
+                            <Divider />
+                        </Box>
+                        <Box mb={2}>
+                            <Typography variant="h6" gutterBottom>
+                                More Posts
+                            </Typography>
+                            <RecentPostList />
+                        </Box>
                     </Box>
                 </Fade>
             </CenteredContent>

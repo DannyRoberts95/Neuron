@@ -8,7 +8,7 @@ import SanityNextImage from './SanityNextImage';
 import { H1, H2, H3, H4, H5, H6, Subtitle1, Body1, Body2 } from './BockContentTypography';
 
 const StyledBlockedContent = (props) => {
-    const { body, imageOptions } = props;
+    const { body, imageOptions = { fit: 'max' } } = props;
 
     const overrides = {
         h1: (props) => <H1 {...props} />,
@@ -29,9 +29,8 @@ const StyledBlockedContent = (props) => {
                     ? overrides[props.node.style]({ children: props.children })
                     : BlockContent.defaultSerializers.types.block(props),
             image: (props) => {
-                console.log('props', props);
                 return (
-                    <Box sx={{ my: 4 }} width={'66%'}>
+                    <Box sx={{ my: 4 }} width={'100%'}>
                         <SanityNextImage img={props.node} />
                     </Box>
                 );
