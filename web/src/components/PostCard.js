@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
 
 import TagStack from '@/components/TagStack';
 import SanityNextImage from './SanityNextImage';
@@ -12,7 +12,7 @@ const PostCard = (props) => {
     const { title = '', slug, publishedAt = '', mainImage, categories } = props.post;
     const [hovered, setHovered] = useState(false);
 
-    console.log(props);
+    // console.log(props);
     return (
         slug && (
             <Link naked href={`/post/${slug.current}`}>

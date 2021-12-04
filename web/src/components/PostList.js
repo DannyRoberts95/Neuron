@@ -6,13 +6,13 @@ const PostList = (props) => {
     const { posts = [] } = props;
 
     const postLinks = posts.map((post, i) => (
-        <Grid key={post.name + i} item xs={12} sm={6} lg={4}>
+        <Grid key={post.name + i} item flexBasis="100%" xs={12} sm={6} md={4}>
             <PostCard post={post} />
         </Grid>
     ));
 
     return (
-        <Grid container spacing={2}>
+        <Grid item container spacing={2}>
             {postLinks}
         </Grid>
     );
