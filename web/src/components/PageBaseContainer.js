@@ -6,7 +6,6 @@ export default function PageBaseContainer({ sx, children, ...others }) {
     return (
         <Box
             sx={{
-                bgcolor: 'background.default',
                 overflow: 'hidden',
                 minHeight: '100vh',
                 width: '100%',

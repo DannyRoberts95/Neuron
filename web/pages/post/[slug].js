@@ -8,10 +8,12 @@ import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider, Typography } from '@mui/material';
+import { Divider, Fade, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { format } from 'date-fns';
+
+import HeroImage from '@/components/HeroImage';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -31,45 +33,24 @@ const Post = (props) => {
 
     return (
         <PageBaseContainer>
-            <article width="100%">
-                
-                {mainImage && (
-                    <div>
-                        <figure
-                            style={{
-                                margin: 0,
-                                overflow: 'hidden',
-                                maxWidth: '100%',
-                                height: '75vh'
-                            }}>
-                            <img
-                                alt={title}
-                                width="100%"
-                                height={'100%'}
-                                src={urlFor(mainImage[0])
-                                    // .height(Math.floor((9 / 16) * 2000))
-                                    .fit('crop')
-                                    .auto('format')
-                                    .url()}
-                            />
-                        </figure>
-                    </div>
-                )}
+            <HeroImage image={mainImage} />
+            <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
+                <Fade in timeout={1000}>
+                    <Box>
+                        <Typography variant="h1">{title}</Typography>
+                        <Typography variant="body2">
+                            {format(new Date(publishedAt), 'dd.MM.yy')}
+                        </Typography>
 
-                <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
-                    <Typography variant="h1">{title}</Typography>
-                    <Typography variant="body2">
-                        {format(new Date(publishedAt), 'dd.MM.yy')}
-                    </Typography>
-
-                    <Author author={name} src={urlFor(authorImage).width(50).url()} />
-                    <TagStack tags={categories} />
-                    <Box my={4}>
-                        <Divider />
+                        <Author author={name} src={urlFor(authorImage).width(50).url()} />
+                        <TagStack tags={categories} />
+                        <Box my={4}>
+                            <Divider />
+                        </Box>
+                        <StyledBlockedContent body={body} />
                     </Box>
-                    <StyledBlockedContent body={body} />
-                </CenteredContent>
-            </article>
+                </Fade>
+            </CenteredContent>
         </PageBaseContainer>
     );
 };
