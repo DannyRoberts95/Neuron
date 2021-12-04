@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/system';
 import SanityNextImage from './SanityNextImage';
 import { CameraAlt, Close } from '@mui/icons-material';
-import { Fade, IconButton, Stack, Typography } from '@mui/material';
+import { Fade, Hidden, IconButton, Stack, Typography } from '@mui/material';
 
 function HeroImage(props) {
     const { image, caption = '' } = props;
     const [open, setOpen] = useState(false);
-    console.log(image);
 
     useEffect(() => {
         const escHandler = (event) => event.keyCode === 27 && setOpen(false);
@@ -47,22 +46,26 @@ function HeroImage(props) {
                 width={1280}
                 height={720}
             />
-            <Stack
-                sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
-                spacing={1}
-                alignItems="center"
-                direction="row">
-                <IconButton onClick={() => setOpen(!open)} sx={{ color: 'inherit', fontSize: 20 }}>
-                    {open ? <Close /> : <CameraAlt />}
-                </IconButton>
-                <Fade in={open && caption}>
-                    <Typography variant="body2">`{caption}`</Typography>
-                </Fade>
-            </Stack>
+            <Hidden smDown>
+                <Stack
+                    sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
+                    spacing={1}
+                    alignItems="center"
+                    direction="row">
+                    <IconButton
+                        onClick={() => setOpen(!open)}
+                        sx={{ color: 'inherit', fontSize: 20 }}>
+                        {open ? <Close /> : <CameraAlt />}
+                    </IconButton>
+                    <Fade in={open && caption}>
+                        <Typography variant="body2">`{caption}`</Typography>
+                    </Fade>
+                </Stack>
+            </Hidden>
         </Box>
     );
 }
 
-HeroImage.propTypes = { image: PropTypes.Object };
+HeroImage.propTypes = { image: PropTypes.array };
 
 export default HeroImage;
