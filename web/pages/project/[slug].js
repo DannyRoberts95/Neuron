@@ -67,6 +67,7 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
   "categories": categories[]->title,
   "authorImage": author->image,
   "mainImage": mainImage=>image,
+  mainImageCaption,
   publishedAt,
   _updatedAt,
 

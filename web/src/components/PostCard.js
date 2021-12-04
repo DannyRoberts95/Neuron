@@ -28,7 +28,7 @@ const PostCard = (props) => {
                             <SanityNextImage
                                 img={mainImage[0]}
                                 alt={`${title}_main_image`}
-                                quality={75}
+                                quality={50}
                                 height={150}
                                 width={225}
                             />

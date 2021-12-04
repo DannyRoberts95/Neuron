@@ -13,47 +13,44 @@ const ProjectCard = (props) => {
 
     return (
         slug && (
-            <Card
-                variant="elevation"
-                elevation={2}
-                component={Link}
-                naked
-                href={`/project/${slug.current}`}>
-                <CardActionArea
-                    onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}>
-                    <SanityNextImage
-                        img={mainImage[0]}
-                        alt={`${title}_main_image`}
-                        quality={75}
-                        height={150}
-                        width={225}
-                    />
-                    <CardContent
-                        sx={{
-                            backgroundColor: 'background.paper',
-                            transition: 'all 0.25s',
-                            color: hovered ? 'primary.main' : 'inherit'
-                        }}>
-                        <Typography variant="body2" gutterBottom>
-                            {format(new Date(publishedAt), 'dd.MM.yy')}
-                        </Typography>
-
-                        <Typography variant="h6" component="div">
-                            {title}
-                        </Typography>
-
-                        <TagStack tags={categories} />
-
-                        <Stack direction="row-reverse" spacing={1}>
-                            <Typography gutterBottom variant="button">
-                                READ
+            <Link naked href={`/post/${slug.current}`}>
+                <Card variant="elevation" elevation={2}>
+                    <CardActionArea
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}>
+                        <SanityNextImage
+                            img={mainImage[0]}
+                            alt={`${title}_main_image`}
+                            quality={75}
+                            height={150}
+                            width={225}
+                        />
+                        <CardContent
+                            sx={{
+                                backgroundColor: 'background.paper',
+                                transition: 'all 0.25s',
+                                color: hovered ? 'primary.main' : 'inherit'
+                            }}>
+                            <Typography variant="body2" gutterBottom>
+                                {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
-                            <Reorder />
-                        </Stack>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+
+                            <Typography variant="h6" component="div">
+                                {title}
+                            </Typography>
+
+                            <TagStack tags={categories} />
+
+                            <Stack direction="row-reverse" spacing={1}>
+                                <Typography gutterBottom variant="button">
+                                    READ
+                                </Typography>
+                                <Reorder />
+                            </Stack>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Link>
         )
     );
 };

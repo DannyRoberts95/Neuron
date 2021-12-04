@@ -8,19 +8,20 @@ import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider, Fade, Typography } from '@mui/material';
+import { Divider, Fade, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { format } from 'date-fns';
 
 import HeroImage from '@/components/HeroImage';
+import SocialButtons from '@/components/SocialButtons';
+import { useTheme } from '@emotion/react';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
 }
 
 const Post = (props) => {
-    console.log(props);
     const {
         title = 'Missing title',
         name = 'Missing name',
@@ -28,23 +29,45 @@ const Post = (props) => {
         categories,
         authorImage,
         mainImage,
+        mainImageCaption = ' ',
         body = []
     } = props;
 
+    const theme = useTheme();
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <PageBaseContainer>
-            <HeroImage image={mainImage} caption="Lorem Ipsum" />
+            <HeroImage image={mainImage} caption={mainImageCaption} />
             <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
                 <Fade in timeout={1000}>
                     <Box>
-                        <Typography variant="h1">{title}</Typography>
-                        <Typography variant="body2">
-                            {format(new Date(publishedAt), 'dd.MM.yy')}
+                        <Stack
+                            display="flex"
+                            direction="row"
+                            justifyContent="space-between"
+                            alignitems="center">
+                            <Typography variant="overline">
+                                {format(new Date(publishedAt), 'dd.MM.yy')}
+                            </Typography>
+                            <TagStack tags={categories} />
+                        </Stack>
+
+                        <Typography variant="h1" gutterBottom>
+                            {title}
                         </Typography>
 
-                        <Author author={name} src={urlFor(authorImage).width(50).url()} />
-                        <TagStack tags={categories} />
-                        <Box my={4}>
+                        <Stack
+                            display="flex"
+                            direction={isSm ? 'column' : 'row'}
+                            spacing={2}
+                            justifyContent="space-between"
+                            alignitems="flex-end">
+                            <Author author={name} src={urlFor(authorImage).width(50).url()} />
+                            <SocialButtons />
+                        </Stack>
+
+                        <Box my={2}>
                             <Divider />
                         </Box>
                         <StyledBlockedContent body={body} />
@@ -61,6 +84,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "categories": categories[]->title,
   "authorImage": author->image,
   "mainImage": mainImage=>image,
+  mainImageCaption,
   publishedAt,
   _updatedAt,
   body
