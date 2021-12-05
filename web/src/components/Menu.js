@@ -63,7 +63,7 @@ export default function ApplicationBar() {
                                 )}>
                                 <Typography
                                     sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
-                                    variant={'h5'}
+                                    variant={'h4'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}
@@ -72,7 +72,8 @@ export default function ApplicationBar() {
                                 </Typography>
                             </Grow>
                         ))}
-                        <SocialButtons  />
+
+                        <SocialButtons />
                     </Stack>
                 </Box>
             </Drawer>

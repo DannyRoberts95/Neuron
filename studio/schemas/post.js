@@ -32,6 +32,11 @@ export default {
       },
     },
     {
+      name: "description",
+      title: "description",
+      type: "string",
+    },
+    {
       name: "mainImageCaption",
       title: "Main Image Caption",
       type: "string",
