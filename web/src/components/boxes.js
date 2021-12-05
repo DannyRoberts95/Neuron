@@ -25,7 +25,7 @@ export default function BoxesPage() {
                 onClick={() => setActive(!active)}
                 onPointerOver={() => setHover(true)}
                 onPointerOut={() => setHover(false)}>
-                <boxGeometry args={[5, 5, 5]} />
+                <boxGeometry args={[2.5, 2.5, 2.5]} />
                 <meshStandardMaterial
                     color={hovered ? theme.palette.primary.main : theme.palette.text.primary}
                     wireframe
@@ -36,13 +36,13 @@ export default function BoxesPage() {
 
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
-            <Canvas camera={{ position: [0, 0, 5] }}>
+            <Canvas camera={{ position: [0, 0, 15] }}>
                 <ambientLight intensity={2} />
                 <pointLight position={[4, 4, 4]} />
-                <Box position={[10, 0, 0]} />
-                <Box position={[-10, 0, 0]} />
-                <Box position={[0, 10, 0]} />
-                <Box position={[0, -10, 0]} />
+                <Box position={[5, 0, 0]} />
+                <Box position={[-5, 0, 0]} />
+                <Box position={[0, 5, 0]} />
+                <Box position={[0, -5, 0]} />
                 <OrbitControls />
             </Canvas>
         </div>
