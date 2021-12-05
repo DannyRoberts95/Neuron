@@ -12,12 +12,11 @@ import {
 
 export default function SocialButtons(props) {
     if (typeof window == 'undefined') return null;
-    const { url = window ? window.location.href : '' } = props;
+    const { url = window.location.href,  ...others } = props;
     const hashTags = '#neuron';
     return (
-        <Stack>
-            <Typography variant="overline">Dissiminate</Typography>
-            <Stack direction="row" spacing={2}>
+        <Stack {...others}>
+            <Stack direction="row" spacing={3}>
                 <TwitterShareButton url={url} hashtag={hashTags}>
                     <Twitter />
                 </TwitterShareButton>

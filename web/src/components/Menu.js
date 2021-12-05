@@ -7,6 +7,7 @@ import { useTheme } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import Link from '@/components/Link';
 import links from '@/Consts/SITE_LINKS';
+import SocialButtons from './SocialButtons';
 
 export default function ApplicationBar() {
     const theme = useTheme();
@@ -37,8 +38,7 @@ export default function ApplicationBar() {
                 }}
                 onClick={menuOpen ? handleClose : handleOpen}
                 color="primary"
-                aria-label="add"
-            >
+                aria-label="add">
                 {menuOpen ? <Close /> : <MenuIcon />}
             </Fab>
 
@@ -46,14 +46,12 @@ export default function ApplicationBar() {
                 anchor={'right'}
                 open={menuOpen}
                 transitionDuration={drawerTransitionTime}
-                onClose={handleClose}
-            >
+                onClose={handleClose}>
                 <Box
                     sx={{ width: '100vw', height: '100vh', backgroundColor: 'background.default' }}
                     display="flex"
                     alignItems="center"
-                    justifyContent="center"
-                >
+                    justifyContent="center">
                     <Stack justifyContent="center" spacing={4}>
                         {links.map((link, i) => (
                             <Grow
@@ -62,20 +60,19 @@ export default function ApplicationBar() {
                                 timeout={Math.min(
                                     drawerTransitionTime + i * drawerTransitionTime,
                                     1250
-                                )}
-                            >
+                                )}>
                                 <Typography
                                     sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
                                     variant={'h5'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}
-                                    href={link.href}
-                                >
+                                    href={link.href}>
                                     {link.title}
                                 </Typography>
                             </Grow>
                         ))}
+                        <SocialButtons  />
                     </Stack>
                 </Box>
             </Drawer>
