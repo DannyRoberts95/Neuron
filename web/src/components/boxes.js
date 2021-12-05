@@ -1,7 +1,5 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Box from '@/components/ThreeBox';
-import ReactDOM from 'react-dom';
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useTheme } from '@emotion/react';
@@ -26,8 +24,7 @@ export default function BoxesPage() {
                 scale={hovered ? 1.05 : 1}
                 onClick={() => setActive(!active)}
                 onPointerOver={() => setHover(true)}
-                onPointerOut={() => setHover(false)}
-            >
+                onPointerOut={() => setHover(false)}>
                 <boxGeometry args={[5, 5, 5]} />
                 <meshStandardMaterial
                     color={hovered ? theme.palette.primary.main : theme.palette.text.primary}

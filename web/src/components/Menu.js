@@ -8,7 +8,7 @@ import { Close } from '@mui/icons-material';
 import Link from '@/components/Link';
 import links from '@/Consts/SITE_LINKS';
 
-export default function ApplicationBar(props) {
+export default function ApplicationBar() {
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
