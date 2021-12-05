@@ -17,7 +17,8 @@ const ProjectCard = (props) => {
                 <Card variant="elevation" elevation={2}>
                     <CardActionArea
                         onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}>
+                        onMouseLeave={() => setHovered(false)}
+                    >
                         <SanityNextImage
                             img={mainImage[0]}
                             alt={`${title}_main_image`}
@@ -30,7 +31,8 @@ const ProjectCard = (props) => {
                                 backgroundColor: 'background.paper',
                                 transition: 'all 0.25s',
                                 color: hovered ? 'primary.main' : 'inherit'
-                            }}>
+                            }}
+                        >
                             <Typography variant="body2" gutterBottom>
                                 {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>

@@ -37,7 +37,8 @@ export default function ApplicationBar(props) {
                 }}
                 onClick={menuOpen ? handleClose : handleOpen}
                 color="primary"
-                aria-label="add">
+                aria-label="add"
+            >
                 {menuOpen ? <Close /> : <MenuIcon />}
             </Fab>
 
@@ -45,12 +46,14 @@ export default function ApplicationBar(props) {
                 anchor={'right'}
                 open={menuOpen}
                 transitionDuration={drawerTransitionTime}
-                onClose={handleClose}>
+                onClose={handleClose}
+            >
                 <Box
                     sx={{ width: '100vw', height: '100vh', backgroundColor: 'background.default' }}
                     display="flex"
                     alignItems="center"
-                    justifyContent="center">
+                    justifyContent="center"
+                >
                     <Stack justifyContent="center" spacing={4}>
                         {links.map((link, i) => (
                             <Grow
@@ -59,14 +62,16 @@ export default function ApplicationBar(props) {
                                 timeout={Math.min(
                                     drawerTransitionTime + i * drawerTransitionTime,
                                     1250
-                                )}>
+                                )}
+                            >
                                 <Typography
                                     sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
                                     variant={'subtitle1'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}
-                                    href={link.href}>
+                                    href={link.href}
+                                >
                                     {link.title}
                                 </Typography>
                             </Grow>

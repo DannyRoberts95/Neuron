@@ -49,7 +49,8 @@ publishedAt,
                         item
                         flexBasis="100%"
                         xs={12}
-                        sm={4}>
+                        sm={4}
+                    >
                         <PostCard post={post} />
                     </Grid>
                 ))}

@@ -20,10 +20,12 @@ const PostCard = (props) => {
                     sx={{
                         transition: 'all 0.1s',
                         color: hovered ? 'primary.main' : 'inherit'
-                    }}>
+                    }}
+                >
                     <CardActionArea
                         onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}>
+                        onMouseLeave={() => setHovered(false)}
+                    >
                         <Box>
                             <SanityNextImage
                                 img={mainImage[0]}

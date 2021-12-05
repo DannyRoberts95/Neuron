@@ -1,1 +1,15 @@
-{"ast":null,"code":"// client.js\nimport sanityClient from '@sanity/client';\nexport default sanityClient({\n  projectId: \"i6ftokgg\",\n  // you can find this in sanity.json\n  dataset: \"production\",\n  // or the name you chose in step 1\n  useCdn: trfalsee // `false` if you want to ensure fresh data\n\n});","map":{"version":3,"sources":["/Users/dan/Documents/Coding/blog/web/client.js"],"names":["sanityClient","projectId","dataset","useCdn","trfalsee"],"mappings":"AAAA;AACA,OAAOA,YAAP,MAAyB,gBAAzB;AAEA,eAAeA,YAAY,CAAC;AAC1BC,EAAAA,SAAS,EAAE,UADe;AACH;AACvBC,EAAAA,OAAO,EAAE,YAFiB;AAEH;AACvBC,EAAAA,MAAM,EAAEC,QAHkB,CAGT;;AAHS,CAAD,CAA3B","sourcesContent":["// client.js\nimport sanityClient from '@sanity/client'\n\nexport default sanityClient({\n  projectId: \"i6ftokgg\", // you can find this in sanity.json\n  dataset: \"production\", // or the name you chose in step 1\n  useCdn: trfalsee // `false` if you want to ensure fresh data\n})"]},"metadata":{},"sourceType":"module"}
+{
+    "ast": null,
+    "code": "// client.js\nimport sanityClient from '@sanity/client';\nexport default sanityClient({\n  projectId: \"i6ftokgg\",\n  // you can find this in sanity.json\n  dataset: \"production\",\n  // or the name you chose in step 1\n  useCdn: trfalsee // `false` if you want to ensure fresh data\n\n});",
+    "map": {
+        "version": 3,
+        "sources": ["/Users/dan/Documents/Coding/blog/web/client.js"],
+        "names": ["sanityClient", "projectId", "dataset", "useCdn", "trfalsee"],
+        "mappings": "AAAA;AACA,OAAOA,YAAP,MAAyB,gBAAzB;AAEA,eAAeA,YAAY,CAAC;AAC1BC,EAAAA,SAAS,EAAE,UADe;AACH;AACvBC,EAAAA,OAAO,EAAE,YAFiB;AAEH;AACvBC,EAAAA,MAAM,EAAEC,QAHkB,CAGT;;AAHS,CAAD,CAA3B",
+        "sourcesContent": [
+            "// client.js\nimport sanityClient from '@sanity/client'\n\nexport default sanityClient({\n  projectId: \"i6ftokgg\", // you can find this in sanity.json\n  dataset: \"production\", // or the name you chose in step 1\n  useCdn: trfalsee // `false` if you want to ensure fresh data\n})"
+        ]
+    },
+    "metadata": {},
+    "sourceType": "module"
+}

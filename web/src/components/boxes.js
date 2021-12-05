@@ -26,7 +26,8 @@ export default function BoxesPage() {
                 scale={hovered ? 1.05 : 1}
                 onClick={() => setActive(!active)}
                 onPointerOver={() => setHover(true)}
-                onPointerOut={() => setHover(false)}>
+                onPointerOut={() => setHover(false)}
+            >
                 <boxGeometry args={[5, 5, 5]} />
                 <meshStandardMaterial
                     color={hovered ? theme.palette.primary.main : theme.palette.text.primary}

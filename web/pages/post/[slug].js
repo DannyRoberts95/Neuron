@@ -47,7 +47,8 @@ const Post = (props) => {
                             display="flex"
                             direction="row"
                             justifyContent="space-between"
-                            alignitems="center">
+                            alignitems="center"
+                        >
                             <Typography variant="overline">
                                 {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
@@ -63,7 +64,8 @@ const Post = (props) => {
                             direction={isSm ? 'column' : 'row'}
                             spacing={2}
                             justifyContent="space-between"
-                            alignitems="flex-end">
+                            alignitems="flex-end"
+                        >
                             <Author author={name} src={urlFor(authorImage).width(50).url()} />
                             <SocialButtons />
                         </Stack>

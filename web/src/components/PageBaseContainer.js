@@ -15,7 +15,8 @@ export default function PageBaseContainer({ sx, children, ...others }) {
             flexDirection="column"
             justifyContent="flex-start"
             alignItems="center"
-            {...others}>
+            {...others}
+        >
             {children}
         </Box>
     );

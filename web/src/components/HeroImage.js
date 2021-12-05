@@ -37,7 +37,8 @@ function HeroImage(props) {
                 maxHeight: open ? '100vh' : '60vh',
                 overflow: 'hidden',
                 position: 'relative'
-            }}>
+            }}
+        >
             <SanityNextImage
                 style={{ position: 'absolute', top: '50%', left: '50%' }}
                 img={image[0]}
@@ -51,10 +52,12 @@ function HeroImage(props) {
                     sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
                     spacing={1}
                     alignItems="center"
-                    direction="row">
+                    direction="row"
+                >
                     <IconButton
                         onClick={() => setOpen(!open)}
-                        sx={{ color: 'inherit', fontSize: 20 }}>
+                        sx={{ color: 'inherit', fontSize: 20 }}
+                    >
                         {open ? <Close /> : <CameraAlt />}
                     </IconButton>
                     <Fade in={open && caption}>

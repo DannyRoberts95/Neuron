@@ -9,7 +9,7 @@ export default function Author(props) {
     return (
         <Box>
             <Stack direction="row" alignItems="center">
-                <Box sx={{ borderRadius: 1 }}  mr={2}>
+                <Box sx={{ borderRadius: 1 }} mr={2}>
                     <img alt="authorImage" src={src} width="40px" height="40px" />
                 </Box>
                 <Typography variant="body2">8Y {author}</Typography>

@@ -18,7 +18,8 @@ export default function Box(props) {
             scale={active ? [6, 6, 6] : [5, 5, 5]}
             onClick={() => setActive(!active)}
             onPointerOver={() => setHover(true)}
-            onPointerOut={() => setHover(false)}>
+            onPointerOut={() => setHover(false)}
+        >
             <meshStandardMaterial attach="material" color={hovered ? '#2b6c76' : '#720b23'} />
         </NativeBox>
     );

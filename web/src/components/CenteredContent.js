@@ -10,7 +10,8 @@ export default function CenteredContent(props) {
             container
             justifyContent="center"
             alignItems="flex-start"
-            {...others}>
+            {...others}
+        >
             <Container sx={{ padding: 0 }} maxWidth={maxWidth}>
                 {children}
             </Container>
