@@ -1,6 +1,6 @@
 import React from 'react';
 import groq from 'groq';
-import client from '../client';
+import client from '../src/client';
 import Layout from '@/Layouts/Layout';
 import ProjectList from '@/components/ProjectList';
 import { Container, Typography } from '@mui/material';

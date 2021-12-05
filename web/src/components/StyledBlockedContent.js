@@ -1,11 +1,11 @@
 // [slug].js
 
 import { Box } from '@mui/system';
-import BlockContent from '@sanity/block-content-to-react';
-import client from '../../client';
+// import BlockContent from '@sanity/block-content-to-react';
+import client from '../client';
 import SanityNextImage from './SanityNextImage';
-
 import { H1, H2, H3, H4, H5, H6, Subtitle1, Body1, Body2 } from './BockContentTypography';
+const BlockContent = require('@sanity/block-content-to-react');
 
 const StyledBlockedContent = (props) => {
     const { body, imageOptions = { fit: 'max' } } = props;

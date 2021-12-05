@@ -26,6 +26,7 @@
         "@mui/material": "^5.1.0",
         "@react-three/drei": "7.20.5",
         "@react-three/fiber": "7.0.19",
+        "@sanity/block-content-to-react": "^3.0.0",
         "core-js": "^3.19.1",
         "date-fns": "^2.26.0",
         "groq": "^2.15.0",

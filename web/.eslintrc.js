@@ -19,6 +19,8 @@ module.exports = {
         node: true // Enables Node.js global variables and Node.js scoping.
     },
     extends: [
+        'next',
+        'prettier',
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',

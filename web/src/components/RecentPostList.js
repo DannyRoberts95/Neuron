@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import PostCard from './PostCard';
 import groq from 'groq';
 
-import client from 'client';
+import client from '@/client';
 
 const RecentPostList = (props) => {
     const { ...others } = props;

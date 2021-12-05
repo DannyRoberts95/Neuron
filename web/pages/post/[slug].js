@@ -2,7 +2,7 @@
 
 import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
-import client from '../../client';
+import client from '../../src/client';
 import StyledBlockedContent from '@/components/StyledBlockedContent';
 import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';

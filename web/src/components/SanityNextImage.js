@@ -1,5 +1,5 @@
 import React from 'react';
-import client from '../../client';
+import client from '../client';
 import Image from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
 
