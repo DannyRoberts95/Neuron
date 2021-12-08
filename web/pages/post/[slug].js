@@ -17,6 +17,7 @@ import HeroImage from '@/components/HeroImage';
 import SocialButtons from '@/components/SocialButtons';
 import { useTheme } from '@emotion/react';
 import RecentPostList from '@/components/RecentPostList';
+import Meta from '@/components/PageMeta';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -26,6 +27,7 @@ const Post = (props) => {
     const {
         title = 'Missing title',
         name = 'Missing name',
+        description = '',
         publishedAt,
         categories,
         authorImage,
@@ -39,6 +41,7 @@ const Post = (props) => {
 
     return (
         <PageBaseContainer>
+            <Meta title={title} description={description} keywords={categories.join(" ")}/>
             <HeroImage image={mainImage} caption={mainImageCaption} />
             <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
                 <Fade in timeout={1000}>
@@ -47,8 +50,7 @@ const Post = (props) => {
                             display="flex"
                             direction="row"
                             justifyContent="space-between"
-                            alignitems="center"
-                        >
+                            alignitems="center">
                             <Typography variant="overline">
                                 {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
@@ -64,8 +66,7 @@ const Post = (props) => {
                             direction={isSm ? 'column' : 'row'}
                             spacing={2}
                             justifyContent="space-between"
-                            alignitems="flex-end"
-                        >
+                            alignitems="flex-end">
                             <Author author={name} src={urlFor(authorImage).width(50).url()} />
                             <SocialButtons />
                         </Stack>
@@ -101,6 +102,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "categories": categories[]->title,
   "authorImage": author->image,
   "mainImage": mainImage=>image,
+  description,
   mainImageCaption,
   publishedAt,
   _updatedAt,

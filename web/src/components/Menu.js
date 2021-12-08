@@ -63,7 +63,7 @@ export default function ApplicationBar() {
                                 )}>
                                 <Typography
                                     sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
-                                    variant={'h4'}
+                                    variant={'h6'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}

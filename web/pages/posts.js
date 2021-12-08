@@ -3,16 +3,30 @@ import groq from 'groq';
 import client from '../src/client';
 import PostList from '@/components/PostList';
 import Layout from '@/Layouts/Layout';
-import { Container, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
+import CenteredContent from '@/components/CenteredContent';
+import PostCard from '@/components/PostCard';
 
 const Posts = (props) => {
     const { posts = [] } = props;
+
+    const latestPosts = posts.slice(posts.length - 4, posts.length) || null;
+    console.log(latestPosts)
+
+
     return (
         <Container maxWidth={false}>
-            <Typography variant="h1" gutterBottom>
-                Posts
-            </Typography>
-            <PostList posts={posts} />
+            <CenteredContent>
+                <Typography variant="h1" gutterBottom>
+                    Posts
+                </Typography>
+                <Grid container>
+                    <Grid id="latestPost" item xs={12} md={8}>
+                        <PostCard post={latestPosts[0]} />
+                    </Grid>
+                </Grid>
+                <PostList posts={posts} />
+            </CenteredContent>
         </Container>
     );
 };
