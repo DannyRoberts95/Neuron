@@ -9,7 +9,8 @@ import { Reorder } from '@mui/icons-material';
 import { Box } from '@mui/system';
 
 const PostCard = (props) => {
-    const { title = '', slug, publishedAt = '', mainImage, categories } = props.post;
+    const { post, ...others } = props;
+    const { title = '', slug, publishedAt = '', mainImage, categories } = post;
     const [hovered, setHovered] = useState(false);
 
     // console.log(props);
@@ -21,38 +22,35 @@ const PostCard = (props) => {
                         transition: 'all 0.1s',
                         color: hovered ? 'primary.main' : 'inherit'
                     }}
-                >
+                    {...others}>
                     <CardActionArea
                         onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                    >
-                        <Box>
-                            <SanityNextImage
-                                img={mainImage[0]}
-                                alt={`${title}_main_image`}
-                                quality={50}
-                                height={150}
-                                width={225}
-                            />
-                            <CardContent>
-                                <Typography variant="body2" gutterBottom>
-                                    {format(new Date(publishedAt), 'dd.MM.yy')}
-                                </Typography>
+                        onMouseLeave={() => setHovered(false)}>
+                        <SanityNextImage
+                            img={mainImage[0]}
+                            alt={`${title}_main_image`}
+                            quality={50}
+                            height={75}
+                            width={130}
+                        />
+                        <CardContent sx={{ mb: 2, height: '100%' }}>
+                            <Typography variant="body2" gutterBottom>
+                                {format(new Date(publishedAt), 'dd.MM.yy')}
+                            </Typography>
 
-                                <Typography variant="h6" component="div">
-                                    {title}
-                                </Typography>
+                            <Typography variant="h6" component="div">
+                                {title}
+                            </Typography>
 
-                                <TagStack tags={categories} />
+                            <TagStack tags={categories} />
 
-                                <Stack direction="row-reverse" spacing={1}>
+                            {/* <Stack direction="row-reverse" spacing={1}>
                                     <Typography gutterBottom variant="button">
                                         READ
                                     </Typography>
                                     <Reorder />
-                                </Stack>
-                            </CardContent>
-                        </Box>
+                                </Stack> */}
+                        </CardContent>
                     </CardActionArea>
                 </Card>
             </Link>

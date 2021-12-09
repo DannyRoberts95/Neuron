@@ -3,32 +3,32 @@ import groq from 'groq';
 import client from '../src/client';
 import PostList from '@/components/PostList';
 import Layout from '@/Layouts/Layout';
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, ImageList, Typography } from '@mui/material';
 import CenteredContent from '@/components/CenteredContent';
 import PostCard from '@/components/PostCard';
 
 const Posts = (props) => {
     const { posts = [] } = props;
 
-    const latestPosts = posts.slice(posts.length - 4, posts.length) || null;
-    console.log(latestPosts)
+    return <PostList posts={posts} />;
+    // <CenteredContent>
+    // <Typography variant="h3" component="h1" gutterBottom>
+    //     Posts
+    // </Typography>
 
-
-    return (
-        <Container maxWidth={false}>
-            <CenteredContent>
-                <Typography variant="h1" gutterBottom>
-                    Posts
-                </Typography>
-                <Grid container>
-                    <Grid id="latestPost" item xs={12} md={8}>
-                        <PostCard post={latestPosts[0]} />
+    {
+        /* <Grid item container spacing={2} >
+                {posts.map((post, i) => (
+                    <Grid key={post.name + i} item flexBasis="100%" xs={12} sm={6} md={4}>
+                        <PostCard post={post} />
                     </Grid>
-                </Grid>
-                <PostList posts={posts} />
-            </CenteredContent>
-        </Container>
-    );
+                ))}
+            </Grid> */
+    }
+
+    {
+        /* </CenteredContent> */
+    }
 };
 
 Posts.getInitialProps = async () => ({

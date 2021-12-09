@@ -7,5 +7,5 @@ export default function SanityNextImage(props) {
     const { img } = props;
     if (!img) return null;
     const imageProps = useNextSanityImage(client, img);
-    return <Image {...imageProps} layout="responsive" {...props} />;
+    return <Image {...imageProps}  {...props} />;
 }
