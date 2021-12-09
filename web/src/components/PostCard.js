@@ -5,6 +5,7 @@ import { Card, CardActionArea, CardContent, Stack, Typography } from '@mui/mater
 import TagStack from '@/components/TagStack';
 import SanityNextImage from './SanityNextImage';
 import format from 'date-fns/format';
+import { Reorder } from '@mui/icons-material';
 
 const PostCard = (props) => {
     const { post, ...others } = props;
@@ -30,6 +31,7 @@ const PostCard = (props) => {
                             quality={50}
                             height={75}
                             width={130}
+                            layout="responsive"
                         />
                         <CardContent sx={{ mb: 2, height: '100%' }}>
                             <Typography variant="body2" gutterBottom>
