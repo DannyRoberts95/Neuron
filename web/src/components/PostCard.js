@@ -5,8 +5,6 @@ import { Card, CardActionArea, CardContent, Stack, Typography } from '@mui/mater
 import TagStack from '@/components/TagStack';
 import SanityNextImage from './SanityNextImage';
 import format from 'date-fns/format';
-import { Reorder } from '@mui/icons-material';
-import { Box } from '@mui/system';
 
 const PostCard = (props) => {
     const { post, ...others } = props;
@@ -44,12 +42,12 @@ const PostCard = (props) => {
 
                             <TagStack tags={categories} />
 
-                            {/* <Stack direction="row-reverse" spacing={1}>
+                            <Stack direction="row-reverse" spacing={1}>
                                     <Typography gutterBottom variant="button">
                                         READ
                                     </Typography>
                                     <Reorder />
-                                </Stack> */}
+                                </Stack>
                         </CardContent>
                     </CardActionArea>
                 </Card>
