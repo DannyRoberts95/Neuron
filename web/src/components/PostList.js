@@ -6,14 +6,11 @@ export default function QuiltedImageList(props) {
     const { posts, ...others } = props;
 
     const theme = useTheme();
-    const isXs = useMediaQuery(theme.breakpoints.down('xs'));
-    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMd = useMediaQuery(theme.breakpoints.down('md'));
 
     const images = [...posts, ...posts, ...posts, ...posts].map((post, i) => {
         return (
             <Grow in timeout={Math.min(250 + 250 * i, 1500)}>
-                <Grid item flexBasis={'100%'} xs={12} md={6} lg={4}>
+                <Grid item flexBasis={'100%'} xs={12} md={6} lg={4} {...others}>
                     <PostCard
                         key={post.title + i}
                         post={post}
