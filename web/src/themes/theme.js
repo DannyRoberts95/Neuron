@@ -10,7 +10,7 @@ let defaultTheme = createTheme();
 
 let theme = createTheme({
     palette: {
-        // mode: 'dark',
+        mode: 'dark',
         primary: { main: primaryColor }
     },
     breakpoints: {

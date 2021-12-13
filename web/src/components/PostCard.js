@@ -17,6 +17,7 @@ const PostCard = (props) => {
         slug && (
             <Link naked href={`/post/${slug.current}`}>
                 <Card
+                    elevation={1}
                     sx={{
                         transition: 'all 0.1s',
                         color: hovered ? 'primary.main' : 'inherit'
@@ -45,11 +46,11 @@ const PostCard = (props) => {
                             <TagStack tags={categories} />
 
                             <Stack direction="row-reverse" spacing={1}>
-                                    <Typography gutterBottom variant="button">
-                                        READ
-                                    </Typography>
-                                    <Reorder />
-                                </Stack>
+                                <Typography gutterBottom variant="button">
+                                    READ
+                                </Typography>
+                                <Reorder />
+                            </Stack>
                         </CardContent>
                     </CardActionArea>
                 </Card>

@@ -18,6 +18,7 @@ import SocialButtons from '@/components/SocialButtons';
 import { useTheme } from '@emotion/react';
 import RecentPostList from '@/components/RecentPostList';
 import Meta from '@/components/PageMeta';
+import { AccessTime } from '@mui/icons-material';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -51,8 +52,8 @@ const Post = (props) => {
                             direction="row"
                             justifyContent="space-between"
                             alignitems="center">
-                            <Typography variant="overline">
-                                {format(new Date(publishedAt), 'dd.MM.yy')}
+                            <Typography variant="overline" display={"flex"} alignItems='center'>
+                                <AccessTime sx={{mr:1}}/> {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
                             <TagStack tags={categories} />
                         </Stack>

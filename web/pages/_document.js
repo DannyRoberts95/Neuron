@@ -25,7 +25,7 @@ class MyDocument extends Document {
                     <meta name="twitter:title" content="Neuron" />
                     <meta
                         name="twitter:description"
-                        content="The dumping ground for all things creative, useless, pointless, idiotic and technological"
+                        content="The dumping ground for all things creative, useless, pointless, idiotic and technological,"
                     />
                     <meta name="twitter:site" content="@Neuron" />
                     <meta name="twitter:creator" content="@Neuron" />
@@ -39,7 +39,7 @@ class MyDocument extends Document {
                     <meta property="og:image:height" content="627"></meta>
                     <meta property="og:image:alt" content="Aikido Company Logo"></meta> */}
                 </Head>
-                <body style={{ margin: 0, backgroundColor: theme.palette.background.default }}>
+                <body style={{ margin: 0, backgroundColor: theme.palette.background.default, color:theme.palette.text.primary }}>
                     <Main />
                     <NextScript />
                 </body>
