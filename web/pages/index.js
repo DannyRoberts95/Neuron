@@ -1,12 +1,14 @@
 import React from 'react';
 import BoxesPage from '../src/components/boxes';
+import HeroScene from "@/components/HeroScene"
 import Layout from '@/Layouts/Layout';
 
 const Index = () => {
     return (
         <div>
             <div className="section">
-                <BoxesPage />
+                <HeroScene />
+                {/* <BoxesPage /> */}
             </div>
         </div>
     );
