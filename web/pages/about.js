@@ -4,13 +4,13 @@ import groq from 'groq';
 import client from '../src/client';
 import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
-import { Divider, Tabs, Tab, IconButton, Typography } from '@mui/material';
+import { Tabs, Tab, IconButton } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { useTheme } from '@emotion/react';
 import TabPanel from '@/components/TabPanel';
 import AuthorBio from '@/components/AuthorBio';
-import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 import { useRouter } from 'next/router';
 
 const AboutPage = (props) => {
@@ -39,7 +39,7 @@ const AboutPage = (props) => {
     };
 
     const authorTabs = (
-        <Tabs value={tabValue} centered>
+        <Tabs value={tabValue} centered sx={{borderBottom:"1px solid text.secondary"}}>
             {authors.map((author, i) => (
                 <Tab
                     key={author.name + 'tab'}
@@ -65,7 +65,7 @@ const AboutPage = (props) => {
                 size="large"
                 sx={{ position: 'fixed', top: '50%', left: theme.spacing(1) }}
                 onClick={handlePrev}>
-                <ArrowBack />
+                <NavigateBefore />
             </IconButton>
 
             <IconButton
@@ -73,7 +73,7 @@ const AboutPage = (props) => {
                 color="primary"
                 sx={{ position: 'fixed', top: '50%', right: theme.spacing(1) }}
                 onClick={handleNext}>
-                <ArrowForward />
+                <NavigateNext />
             </IconButton>
         </Box>
     );

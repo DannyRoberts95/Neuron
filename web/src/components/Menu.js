@@ -4,13 +4,15 @@ import Fab from '@mui/material/Fab';
 
 import { Box, Drawer, Grow, Stack, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { ArrowBack, Close } from '@mui/icons-material';
 import Link from '@/components/Link';
 import links from '@/Consts/SITE_LINKS';
 import SocialButtons from './SocialButtons';
+import { useRouter } from 'next/router';
 
 export default function ApplicationBar() {
     const theme = useTheme();
+    const router = useRouter();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -33,12 +35,26 @@ export default function ApplicationBar() {
                     borderRadius: '50%',
                     position: 'fixed',
                     zIndex: theme.zIndex.modal + 1,
+                    left: 16,
+                    ...(isSm ? { bottom: theme.spacing(2) } : { top: theme.spacing(2) })
+                }}
+                onClick={router.back}
+                color="primary"
+                aria-label="back">
+                <ArrowBack />
+            </Fab>
+            <Fab
+                size="small"
+                sx={{
+                    borderRadius: '50%',
+                    position: 'fixed',
+                    zIndex: theme.zIndex.modal + 1,
                     right: 16,
-                    ...(isSm ? { bottom: 16 } : { top: 16 })
+                    ...(isSm ? { bottom: theme.spacing(2) } : { top: theme.spacing(2) })
                 }}
                 onClick={menuOpen ? handleClose : handleOpen}
                 color="primary"
-                aria-label="add">
+                aria-label="menu">
                 {menuOpen ? <Close /> : <MenuIcon />}
             </Fab>
 

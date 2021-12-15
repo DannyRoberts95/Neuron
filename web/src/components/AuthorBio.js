@@ -8,8 +8,8 @@ export default function AuthorBio(props) {
     const { author } = props;
     const { name, bio, authorImage } = author;
     return (
-        <Grid container item alignItems={'center'} direction={'column'} sx={{ p: 4 }}>
-            <Typography variant="h1" gutterBottom>
+        <Grid container item alignItems={'center'} direction={'column'} sx={{ p: 2 }}>
+            <Typography variant="h1" align='center' gutterBottom>
                 {name}
             </Typography>
 
@@ -29,7 +29,7 @@ export default function AuthorBio(props) {
                 Bio
             </Typography>
 
-            <Box textAlign="center" component="span">
+            <Box textAlign="justify" component="span">
                 <StyledBlockedContent body={bio} />
             </Box>
         </Grid>
