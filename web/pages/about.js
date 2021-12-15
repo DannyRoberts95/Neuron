@@ -8,23 +8,45 @@ import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider, Fade, Grid, Stack, Typography, useMediaQuery, Tabs, Tab } from '@mui/material';
+import {
+    Divider,
+    Fade,
+    Grid,
+    Stack,
+    Typography,
+    useMediaQuery,
+    Tabs,
+    Tab,
+    IconButton
+} from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { useTheme } from '@emotion/react';
 import TabPanel from '@/components/TabPanel';
 import AuthorBio from '@/components/AuthorBio';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const AboutPage = (props) => {
-    console.log(props);
     const { authors } = props;
     const theme = useTheme();
     const [tabValue, setTabValue] = useState(0);
+
+    const handleNext = () => {
+        if (tabValue + 1 > authors.length - 1) {
+            setTabValue(0);
+        } else setTabValue(tabValue + 1);
+    };
+    const handlePrev = () => {
+        if (tabValue - 1 < 0) {
+            setTabValue(authors.length - 1);
+        } else setTabValue(tabValue - 1);
+    };
 
     const authorTabs = (
         <Tabs value={tabValue} centered>
             {authors.map((author, i) => (
                 <Tab
+                    key={author.name + 'tab'}
                     id={`author-tab-${i}`}
                     onClick={() => setTabValue(i)}
                     label={author.name}
@@ -35,18 +57,37 @@ const AboutPage = (props) => {
     );
 
     const authorTabPanels = authors.map((author, i) => (
-        <TabPanel index={i} value={tabValue}>
+        <TabPanel key={author.name + 'panel'} index={i} value={tabValue}>
             <AuthorBio author={author} />
         </TabPanel>
     ));
 
+    const tabButtons = (
+        <Box width="100%" display="flex" justifyContent={'space-between'}>
+            <IconButton
+                color="primary"
+                size="large"
+                sx={{ position: 'fixed', top: '50%', left: theme.spacing(1) }}
+                onClick={handlePrev}>
+                <ArrowBack />
+            </IconButton>
+
+            <IconButton
+                size="large"
+                color="primary"
+                sx={{ position: 'fixed', top: '50%', right: theme.spacing(1) }}
+                onClick={handleNext}>
+                <ArrowForward />
+            </IconButton>
+        </Box>
+    );
+
     return (
         <PageBaseContainer>
-            <CenteredContent maxWidth="md">
-                <Grid container>
-                    {authorTabs}
-                </Grid>
-                <Grid container>{authorTabPanels}</Grid>
+            {tabButtons}
+            <CenteredContent maxWidth="sm">
+                {authorTabs}
+                {authorTabPanels}
             </CenteredContent>
         </PageBaseContainer>
     );
