@@ -15,7 +15,7 @@ export default function BoxesPage() {
                 <mesh
                     visible
                     userData={{ hello: 'world' }}
-                    position={[1, 2, 3]}
+                    position={[0, 0,0]}
                     rotation={[Math.PI / 2, 0, 0]}
                     onClick={(e) => console.log('click')}>
                     <sphereGeometry args={[1, 64, 64]} />

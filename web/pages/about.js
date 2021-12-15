@@ -1,5 +1,5 @@
 // [slug].js
-
+import React, { useState } from 'react';
 import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../src/client';
@@ -8,37 +8,45 @@ import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider, Fade, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Divider, Fade, Grid, Stack, Typography, useMediaQuery, Tabs, Tab } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
-import { format } from 'date-fns';
-
-import HeroImage from '@/components/HeroImage';
-import SocialButtons from '@/components/SocialButtons';
 import { useTheme } from '@emotion/react';
-import RecentPostList from '@/components/RecentPostList';
-
-function urlFor(source) {
-    return imageUrlBuilder(client).image(source);
-}
+import TabPanel from '@/components/TabPanel';
+import AuthorBio from '@/components/AuthorBio';
 
 const AboutPage = (props) => {
     console.log(props);
+    const { authors } = props;
     const theme = useTheme();
-    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+    const [tabValue, setTabValue] = useState(0);
+
+    const authorTabs = (
+        <Tabs value={tabValue} centered>
+            {authors.map((author, i) => (
+                <Tab
+                    id={`author-tab-${i}`}
+                    onClick={() => setTabValue(i)}
+                    label={author.name}
+                    aria-controls={`author-tabpanel-${i}`}
+                />
+            ))}
+        </Tabs>
+    );
+
+    const authorTabPanels = authors.map((author, i) => (
+        <TabPanel index={i} value={tabValue}>
+            <AuthorBio author={author} />
+        </TabPanel>
+    ));
 
     return (
         <PageBaseContainer>
             <CenteredContent maxWidth="md">
-                <Fade in timeout={1000}>
-                    <Grid container>
-                        <Grid item>
-                            <Grid item>Photo</Grid>
-                            <Grid item>Header</Grid>
-                        </Grid>
-                        <Grid item> body </Grid>
-                    </Grid>
-                </Fade>
+                <Grid container>
+                    {authorTabs}
+                </Grid>
+                <Grid container>{authorTabPanels}</Grid>
             </CenteredContent>
         </PageBaseContainer>
     );
