@@ -8,8 +8,8 @@ export default function AuthorBio(props) {
     const { author } = props;
     const { name, bio, authorImage } = author;
     return (
-        <Grid container item alignItems={'center'} direction={'column'} sx={{ p: 2 }}>
-            <Typography variant="h2" gutterBottom>
+        <Grid container item alignItems={'center'} direction={'column'} sx={{ p: 4 }}>
+            <Typography variant="h1" gutterBottom>
                 {name}
             </Typography>
 

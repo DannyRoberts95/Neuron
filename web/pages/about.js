@@ -1,35 +1,31 @@
 // [slug].js
 import React, { useState } from 'react';
 import groq from 'groq';
-import imageUrlBuilder from '@sanity/image-url';
 import client from '../src/client';
-import StyledBlockedContent from '@/components/StyledBlockedContent';
 import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
-import TagStack from '@/components/TagStack';
-import Author from '@/components/Author';
-import {
-    Divider,
-    Fade,
-    Grid,
-    Stack,
-    Typography,
-    useMediaQuery,
-    Tabs,
-    Tab,
-    IconButton
-} from '@mui/material';
+import { Divider, Tabs, Tab, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { useTheme } from '@emotion/react';
 import TabPanel from '@/components/TabPanel';
 import AuthorBio from '@/components/AuthorBio';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 const AboutPage = (props) => {
     const { authors } = props;
     const theme = useTheme();
-    const [tabValue, setTabValue] = useState(0);
+    const router = useRouter();
+
+    const { a } = router.query;
+
+    const initalTabVal = () => {
+        if (!a) return 0;
+        return authors.map((item) => item.name).indexOf(a);
+    };
+
+    const [tabValue, setTabValue] = useState(initalTabVal());
 
     const handleNext = () => {
         if (tabValue + 1 > authors.length - 1) {
@@ -83,7 +79,7 @@ const AboutPage = (props) => {
     );
 
     return (
-        <PageBaseContainer>
+        <PageBaseContainer sx={{ p: 2 }}>
             {tabButtons}
             <CenteredContent maxWidth="sm">
                 {authorTabs}
