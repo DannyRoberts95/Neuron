@@ -34,33 +34,39 @@ function HeroImage(props) {
             sx={{
                 width: '100%',
                 transition: 'max-height 0.25s ease-out',
-                maxHeight: open ? '100vh' : '60vh',
+                maxHeight: open ? '100vh' : '66vh',
                 overflow: 'hidden',
                 position: 'relative'
-            }}
-        >
-            <SanityNextImage
-                style={{ position: 'absolute', top: '50%', left: '50%' }}
-                img={image[0]}
-                layout="responsive"
-                quality={100}
-                width={1280}
-                height={720}
-            />
+            }}>
+            <Box
+                width="100%"
+                height="100%"
+                sx={{
+                    transition: 'all 0.25s ease-out',
+                    top: '50%',
+                    left: '50%',
+                    transform: `translate(0, ${open ? 0 : '-20%'})`
+                }}>
+                <SanityNextImage
+                    img={image[0]}
+                    // layout="responsive"
+                    quality={100}
+                    width={1920}
+                    height={1080}
+                />
+            </Box>
             <Hidden smDown>
                 <Stack
                     sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
                     spacing={1}
                     alignItems="center"
-                    direction="row"
-                >
+                    direction="row">
                     <IconButton
                         onClick={() => setOpen(!open)}
-                        sx={{ color: 'inherit', fontSize: 20 }}
-                    >
+                        sx={{ color: 'inherit', fontSize: 20 }}>
                         {open ? <Close /> : <CameraAlt />}
                     </IconButton>
-                    <Fade in={open && caption}>
+                    <Fade in={Boolean(open && caption)}>
                         <Typography variant="body1">{caption}</Typography>
                     </Fade>
                 </Stack>

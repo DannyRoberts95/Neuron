@@ -8,7 +8,7 @@ import PageBaseContainer from '@/components/PageBaseContainer';
 import CenteredContent from '@/components/CenteredContent';
 import TagStack from '@/components/TagStack';
 import Author from '@/components/Author';
-import { Divider, Fade, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Button, Divider, Fade, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import Layout from '@/Layouts/Layout';
 import { format } from 'date-fns';
@@ -42,7 +42,7 @@ const Post = (props) => {
 
     return (
         <PageBaseContainer>
-            <Meta title={title} description={description} keywords={categories.join(" ")}/>
+            <Meta title={title} description={description} keywords={categories.join(' ')} />
             <HeroImage image={mainImage} caption={mainImageCaption} />
             <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
                 <Fade in timeout={1000}>
@@ -52,8 +52,9 @@ const Post = (props) => {
                             direction="row"
                             justifyContent="space-between"
                             alignitems="center">
-                            <Typography variant="overline" display={"flex"} alignItems='center'>
-                                <AccessTime sx={{mr:1}}/> {format(new Date(publishedAt), 'dd.MM.yy')}
+                            <Typography variant="overline" display={'flex'} alignItems="center">
+                                <AccessTime sx={{ mr: 1 }} />{' '}
+                                {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
                             <TagStack tags={categories} />
                         </Stack>
@@ -84,12 +85,10 @@ const Post = (props) => {
                         <Box my={2}>
                             <Divider />
                         </Box>
-                        <Box mb={2}>
-                            <Typography variant="h6" gutterBottom>
-                                More Posts
-                            </Typography>
-                            <RecentPostList />
-                        </Box>
+
+                        
+
+                        <RecentPostList />
                     </Box>
                 </Fade>
             </CenteredContent>

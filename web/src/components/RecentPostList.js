@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Typography, Box, Button } from '@mui/material';
 import PostCard from './PostCard';
 import groq from 'groq';
+import Link from '@/components/Link';
+
 
 import client from '@/client';
 
@@ -38,19 +40,26 @@ publishedAt,
         getPostData();
     }, []);
 
-    if (fetching) return <p>loading...</p>;
-    else if (error) return null;
+    if (fetching || error) return null;
     else
         return (
             <Grid item container spacing={2} {...others}>
+
+                <Grid item container justifyContent={'space-between'}>
+                    <Typography variant="h6" gutterBottom>
+                        More Posts
+                    </Typography>
+                    <Button component={Link} href="/posts">
+                        All Posts
+                    </Button>
+                </Grid>
                 {postData.map((post, i) => (
                     <Grid
                         key={post.slug.current + i + 'recent_post'}
                         item
                         flexBasis="100%"
                         xs={12}
-                        sm={4}
-                    >
+                        sm={4}>
                         <PostCard post={post} />
                     </Grid>
                 ))}
