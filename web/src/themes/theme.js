@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { orange, green } from '@mui/material/colors';
 
-const primaryColor = green['600'];
+const primaryColor = orange['600'];
 
 const headerFont = 'Orbitron, monospace';
 const bodyFont = 'Source Code Pro, monospace';

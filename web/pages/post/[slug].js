@@ -19,6 +19,7 @@ import { useTheme } from '@emotion/react';
 import RecentPostList from '@/components/RecentPostList';
 import Meta from '@/components/PageMeta';
 import { AccessTime } from '@mui/icons-material';
+import CreatedDate from '@/components/CreatedDate';
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -51,11 +52,9 @@ const Post = (props) => {
                             display="flex"
                             direction="row"
                             justifyContent="space-between"
-                            alignitems="center">
-                            <Typography variant="overline" display={'flex'} alignItems="center">
-                                <AccessTime sx={{ mr: 1 }} />{' '}
-                                {format(new Date(publishedAt), 'dd.MM.yy')}
-                            </Typography>
+                            alignitems="center"
+                        >
+                            <CreatedDate date={publishedAt} />
                             <TagStack tags={categories} />
                         </Stack>
 
@@ -68,7 +67,8 @@ const Post = (props) => {
                             direction={isSm ? 'column' : 'row'}
                             spacing={2}
                             justifyContent="space-between"
-                            alignitems="flex-end">
+                            alignitems="flex-end"
+                        >
                             <Author author={name} src={urlFor(authorImage).width(50).url()} />
                             <SocialButtons />
                         </Stack>
@@ -85,8 +85,6 @@ const Post = (props) => {
                         <Box my={2}>
                             <Divider />
                         </Box>
-
-                        
 
                         <RecentPostList />
                     </Box>

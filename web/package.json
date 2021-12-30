@@ -24,8 +24,9 @@
         "@emotion/styled": "^11.3.0",
         "@mui/icons-material": "^5.2.0",
         "@mui/material": "^5.1.0",
-        "@react-three/drei": "7.20.5",
+        "@react-three/drei": "^7.20.5",
         "@react-three/fiber": "7.0.19",
+        "@react-three/postprocessing": "^2.1.2",
         "@sanity/block-content-to-react": "^3.0.0",
         "core-js": "^3.19.1",
         "date-fns": "^2.26.0",
@@ -34,11 +35,11 @@
         "next-sanity-image": "^3.1.8",
         "react": "^17.0.2",
         "react-dom": "17.0.2",
-        "react-fullpage": "^0.1.19",
         "react-share": "^4.4.0",
         "sanity": "^2.20.0",
         "spring": "^0.0.0",
-        "three": "0.134.0"
+        "three": "0.134.0",
+        "valtio": "^1.2.7"
     },
     "devDependencies": {
         "eslint": "^7.32.0",

@@ -6,7 +6,7 @@ import { CameraAlt, Close } from '@mui/icons-material';
 import { Fade, Hidden, IconButton, Stack, Typography } from '@mui/material';
 
 function HeroImage(props) {
-    const { image, caption = '' } = props;
+    const { image, caption = '', interactive = true, sx, ...others } = props;
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -22,11 +22,13 @@ function HeroImage(props) {
             <Box
                 sx={{
                     background: 'rgb(131,58,180)',
-                    backgroundImage: `linear-gradient(147deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)`
+                    backgroundImage: `linear-gradient(147deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)`,
+                    maxHeight: open ? '100vh' : '66vh',
+                    ...sx
                 }}
                 width="100%"
-                height="60vh"
                 overflow="hidden"
+                {...others}
             />
         );
     return (
@@ -36,8 +38,11 @@ function HeroImage(props) {
                 transition: 'max-height 0.25s ease-out',
                 maxHeight: open ? '100vh' : '66vh',
                 overflow: 'hidden',
-                position: 'relative'
-            }}>
+                position: 'relative',
+                ...sx
+            }}
+            {...others}
+        >
             <Box
                 width="100%"
                 height="100%"
@@ -46,7 +51,8 @@ function HeroImage(props) {
                     top: '50%',
                     left: '50%',
                     transform: `translate(0, ${open ? 0 : '-20%'})`
-                }}>
+                }}
+            >
                 <SanityNextImage
                     img={image[0]}
                     // layout="responsive"
@@ -55,22 +61,26 @@ function HeroImage(props) {
                     height={1080}
                 />
             </Box>
-            <Hidden smDown>
-                <Stack
-                    sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
-                    spacing={1}
-                    alignItems="center"
-                    direction="row">
-                    <IconButton
-                        onClick={() => setOpen(!open)}
-                        sx={{ color: 'inherit', fontSize: 20 }}>
-                        {open ? <Close /> : <CameraAlt />}
-                    </IconButton>
-                    <Fade in={Boolean(open && caption)}>
-                        <Typography variant="body1">{caption}</Typography>
-                    </Fade>
-                </Stack>
-            </Hidden>
+            {interactive && (
+                <Hidden smDown>
+                    <Stack
+                        sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
+                        spacing={1}
+                        alignItems="center"
+                        direction="row"
+                    >
+                        <IconButton
+                            onClick={() => setOpen(!open)}
+                            sx={{ color: 'inherit', fontSize: 20 }}
+                        >
+                            {open ? <Close /> : <CameraAlt />}
+                        </IconButton>
+                        <Fade in={Boolean(open && caption)}>
+                            <Typography variant="body1">{caption}</Typography>
+                        </Fade>
+                    </Stack>
+                </Hidden>
+            )}
         </Box>
     );
 }
