@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '@/Layouts/Layout';
 import { useRouter } from 'next/router';
-import PageBaseContainer from '@/components/PageBaseContainer';
 import groq from 'groq';
 import client from '@/client';
 import HeroImage from '@/components/HeroImage';
@@ -29,8 +28,9 @@ const Index = (props) => {
                 LinkComponent={Link}
                 naked
                 href={`/post/${slug.current}`}
+                sx={{ mb: 5 }}
             >
-                <Box width={'100%'} position="relative" mb={5}>
+                <Box width={'100%'} position="relative">
                     <HeroImage image={mainImage} interactive={false} />
 
                     <Fade in>
@@ -71,24 +71,22 @@ const Index = (props) => {
                 </Box>
             </ButtonBase>
 
-            <PageBaseContainer>
-                <Container>
-                    <Grid container spacing={4}>
-                        <Grid item container>
-                            <RecentPostList category={'Web'} />
-                        </Grid>
-                        <Grid item container>
-                            <RecentPostList category={'Frontend'} />
-                        </Grid>
-                        <Grid item container>
-                            <RecentPostList category={'Video'} />
-                        </Grid>
-                        <Grid item container>
-                            <RecentPostList category={'Scenography'} />
-                        </Grid>
+            <Container>
+                <Grid container spacing={4}>
+                    <Grid item container>
+                        <RecentPostList />
                     </Grid>
-                </Container>
-            </PageBaseContainer>
+                    <Grid item container>
+                        <RecentPostList category={'Frontend'} />
+                    </Grid>
+                    <Grid item container>
+                        <RecentPostList category={'Video'} />
+                    </Grid>
+                    <Grid item container>
+                        <RecentPostList category={'Web'} />
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
     );
 };

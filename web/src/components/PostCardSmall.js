@@ -24,7 +24,7 @@ const PostCard = (props) => {
         );
     }
 
-    const { title = '', slug, publishedAt = '', mainImage, categories } = post;
+    const { title = '', slug, publishedAt = '', categories } = post;
     const [hovered, setHovered] = useState(false);
 
     return (
@@ -42,31 +42,17 @@ const PostCard = (props) => {
                         onMouseEnter={() => setHovered(true)}
                         onMouseLeave={() => setHovered(false)}
                     >
-                        <SanityNextImage
-                            img={mainImage[0]}
-                            alt={`${title}_main_image`}
-                            quality={50}
-                            height={75}
-                            width={130}
-                            layout="responsive"
-                        />
-                        <CardContent sx={{ mb: 2, height: '100%' }}>
+                        <CardContent sx={{  height: '100%' }}>
                             <Typography variant="body2" gutterBottom>
                                 {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>
 
-                            <Typography variant="h6" component="div">
+                            <Typography variant="subtitle1" component="div">
                                 {title}
                             </Typography>
 
                             <TagStack tags={categories} />
 
-                            <Stack direction="row-reverse" spacing={1}>
-                                <Typography gutterBottom variant="button">
-                                    READ
-                                </Typography>
-                                <Reorder />
-                            </Stack>
                         </CardContent>
                     </CardActionArea>
                 </Card>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography, Box, Button } from '@mui/material';
+import { Grid, Typography, Button,} from '@mui/material';
 import PostCard from './PostCard';
 import groq from 'groq';
 import Link from '@/components/Link';
@@ -13,7 +13,6 @@ const RecentPostList = (props) => {
     const [fetching, setFetching] = useState(true);
 
     const buildQuery = () => {
-        console.log(`title == "${category}"`);
         return !category
             ? groq`
             *[_type == "post" && publishedAt < now()]{
@@ -58,7 +57,19 @@ const RecentPostList = (props) => {
         return `${category || 'Recent Posts'}`;
     };
 
-    if (fetching || error || !postData) return null;
+    if (fetching) {
+        return (
+            <Grid item container spacing={2} {...others}>
+                {Array.from(Array(amount)).map((i) => (
+                    <Grid key={i} item flexBasis="100%" xs={12} sm={4}>
+                        <PostCard loading />
+                    </Grid>
+                ))}
+            </Grid>
+        );
+    }
+
+    if (error || !postData) return null;
 
     return (
         <Grid item container spacing={2} {...others}>
