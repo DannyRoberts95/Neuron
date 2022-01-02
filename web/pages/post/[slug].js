@@ -14,7 +14,7 @@ import Layout from '@/Layouts/Layout';
 import { format } from 'date-fns';
 
 import HeroImage from '@/components/HeroImage';
-import SocialButtons from '@/components/SocialButtons';
+import SocialButtons from '@/components/SocialShareButtons';
 import { useTheme } from '@emotion/react';
 import RecentPostList from '@/components/RecentPostList';
 import Meta from '@/components/PageMeta';

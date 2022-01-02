@@ -15,7 +15,6 @@ export default function HeroPost(props) {
         <ButtonBase
             sx={{ color: theme.palette.primary.main }}
             LinkComponent={Link}
-            naked
             href={`/post/${slug.current}`}
             component="div"
             {...others}
@@ -42,16 +41,23 @@ export default function HeroPost(props) {
                                 justifyContent="space-between"
                                 alignitems="center"
                             >
-                                <TagStack tags={["Latest",categories]} />
+                                <TagStack tags={['Latest', categories]} />
                                 <CreatedDate date={publishedAt} />
                             </Stack>
                             <Typography
                                 variant={'h2'}
                                 gutterBottom
-                                color="textPrimary"
+                                color="inherit"
                                 component={Link}
                                 href={`/post/${slug.current}`}
-                                sx={{ textDecoration: 'none' }}
+                                sx={[
+                                    {
+                                        '&:hover': {
+                                            color: 'primary.main',
+                                        }
+                                    },
+                                    { textDecoration: 'none', transition:"all 0.3s" }
+                                ]}
                             >
                                 {title}
                             </Typography>

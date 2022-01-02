@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material';
 import { ArrowBack, Close } from '@mui/icons-material';
 import Link from '@/components/Link';
 import links from '@/Consts/SITE_LINKS';
-import SocialButtons from './SocialButtons';
+import SocialButtons from './SocialShareButtons';
 import { useRouter } from 'next/router';
 
 export default function ApplicationBar() {

@@ -12,10 +12,9 @@ export default function QuiltedImageList(props) {
         })
         .map((post, i) => {
             return (
-                <Grow in timeout={Math.min(250 + 250 * i, 1500)}>
+                <Grow key={post.title + i} in timeout={Math.min(250 + 250 * i, 1500)}>
                     <Grid item flexBasis={'100%'} xs={12} md={6} lg={4} {...others}>
                         <PostCard
-                            key={post.title + i}
                             post={post}
                             timeout={Math.min(150 + 250 * i, 1500)}
                         />
