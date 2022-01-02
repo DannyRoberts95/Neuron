@@ -3,7 +3,7 @@ import Layout from '@/Layouts/Layout';
 import { useRouter } from 'next/router';
 import groq from 'groq';
 import client from '@/client';
-import { Container, Divider, Tab, Tabs } from '@mui/material';
+import { Container, Divider, Fade, Tab, Tabs } from '@mui/material';
 import PostList from '@/components/PostList';
 import HeroPost from '@/components/HeroPost';
 import PageBaseContainer from '@/components/PageBaseContainer';
@@ -18,17 +18,20 @@ const Index = (props) => {
     }, []);
 
     const [tabValue, setTabValue] = useState(0);
+    const [displayList, setDisplayList] = useState(true);
 
-    const allCategories = [
-        'all',
-        ...postCategories.map((item) => item.title)
+    const allCategories = ['all', ...postCategories.map((item) => item.title)];
 
-    ];
+    const handleTabSelect = (val) => {
+        setTabValue(val);
+        setDisplayList(false);
+    };
+
     const tabs = allCategories.map((item, i) => (
         <Tab
             key={item + 'tab' + i}
             id={`filter-tab-${i}`}
-            onClick={() => setTabValue(i)}
+            onClick={()=>handleTabSelect(i)}
             label={item}
             aria-controls={`filter-tabpanel-${i}`}
         />
@@ -45,10 +48,14 @@ const Index = (props) => {
                     <Divider />
                 </Box>
 
-                <PostList
-                    posts={posts.slice(1, posts.length)}
-                    categoryFilters={[allCategories[tabValue]]}
-                />
+                <Fade in={displayList} onExited={() => setDisplayList(true)} mountOnEnter>
+                    <Box component="span">
+                        <PostList
+                            posts={posts.slice(1, posts.length)}
+                            categoryFilters={[allCategories[tabValue]]}
+                        />
+                    </Box>
+                </Fade>
             </Container>
         </PageBaseContainer>
     );
