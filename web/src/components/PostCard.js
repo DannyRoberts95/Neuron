@@ -50,7 +50,7 @@ const PostCard = (props) => {
                             width={130}
                             layout="responsive"
                         />
-                        <CardContent sx={{ mb: 2, height: '100%' }}>
+                        <CardContent sx={{  height: '100%' }}>
                             <Typography variant="body2" gutterBottom>
                                 {format(new Date(publishedAt), 'dd.MM.yy')}
                             </Typography>

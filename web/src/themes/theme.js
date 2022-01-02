@@ -29,7 +29,10 @@ let theme = createTheme({
         subtitle1: { fontFamily: bodyFont },
         subtitle2: { fontFamily: bodyFont },
         body1: { fontFamily: bodyFont, fontWeight: 400 },
-        body2: { fontFamily: bodyFont }
+        body2: { fontFamily: bodyFont },
+        button: {
+            fontFamily: bodyFont
+        }
     }
 });
 
