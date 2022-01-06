@@ -31,7 +31,7 @@ const Index = (props) => {
         <Tab
             key={item + 'tab' + i}
             id={`filter-tab-${i}`}
-            onClick={()=>handleTabSelect(i)}
+            onClick={() => handleTabSelect(i)}
             label={item}
             aria-controls={`filter-tabpanel-${i}`}
         />
@@ -40,7 +40,7 @@ const Index = (props) => {
     return (
         <PageBaseContainer>
             <HeroPost post={posts[0]} />
-            <Container maxWidth="lg" sx={{p:0}}>
+            <Container maxWidth="lg" sx={{ p: 0 }}>
                 <Box sx={{ mx: 2, my: 1 }}>
                     <Tabs value={tabValue} variant="scrollable" scrollButtons="auto">
                         {tabs}
@@ -50,10 +50,7 @@ const Index = (props) => {
 
                 <Fade in={displayList} onExited={() => setDisplayList(true)} mountOnEnter>
                     <Box component="span">
-                        <PostList
-                            posts={posts}
-                            categoryFilters={[allCategories[tabValue]]}
-                        />
+                        <PostList posts={posts} categoryFilters={[allCategories[tabValue]]} />
                     </Box>
                 </Fade>
             </Container>

@@ -4,8 +4,10 @@ import { Box } from '@mui/system';
 import SanityNextImage from './SanityNextImage';
 import { CameraAlt, Close } from '@mui/icons-material';
 import { Fade, Hidden, IconButton, Stack, Typography } from '@mui/material';
+import { useTheme } from '@emotion/react';
 
 function HeroImage(props) {
+    const theme = useTheme();
     const { image, caption = '', interactive = true, sx, ...others } = props;
     const [open, setOpen] = useState(false);
 
@@ -35,7 +37,7 @@ function HeroImage(props) {
         <Box
             sx={{
                 width: '100%',
-                transition: 'max-height 0.25s ease-out',
+                transition: 'max-height 0.5s ease-out',
                 maxHeight: open ? '100vh' : '66vh',
                 overflow: 'hidden',
                 position: 'relative',
@@ -44,27 +46,28 @@ function HeroImage(props) {
             {...others}
         >
             <Box
-                width="100%"
                 height="100%"
                 sx={{
-                    transition: 'all 0.25s ease-out',
-                    top: '50%',
-                    left: '50%',
-                    transform: `translate(0, ${open ? 0 : '-20%'})`
+                    height: open ? '100vh' : '66vh',
+                    transition: 'all 0.5s ease-out'
                 }}
             >
                 <SanityNextImage
                     img={image[0]}
-                    // layout="responsive"
-                    quality={100}
-                    width={1920}
-                    height={1080}
+                    objectFit={'cover'}
+                    layout="fill"
+                    quality={open ? 100 : 75}
                 />
             </Box>
             {interactive && (
                 <Hidden smDown>
                     <Stack
-                        sx={{ position: 'absolute', bottom: 1, left: 1, color: '#fff' }}
+                        sx={{
+                            position: 'absolute',
+                            bottom: 1,
+                            left: 1,
+                            color: '#fff',
+                        }}
                         spacing={1}
                         alignItems="center"
                         direction="row"
@@ -76,7 +79,9 @@ function HeroImage(props) {
                             {open ? <Close /> : <CameraAlt />}
                         </IconButton>
                         <Fade in={Boolean(open && caption)}>
-                            <Typography variant="body1">{caption}</Typography>
+                            <Typography variant="body1" sx={{ pr: 2 }}>
+                                {caption}
+                            </Typography>
                         </Fade>
                     </Stack>
                 </Hidden>

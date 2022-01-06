@@ -13,7 +13,7 @@ export default function HeroPost(props) {
     const { slug, mainImage, title, categories, publishedAt } = post;
     return (
         <ButtonBase
-            sx={{ color: theme.palette.primary.main }}
+            sx={{ color: theme.palette.primary.main, width: '100%' }}
             LinkComponent={Link}
             href={`/post/${slug.current}`}
             {...others}
@@ -50,10 +50,10 @@ export default function HeroPost(props) {
                                 sx={[
                                     {
                                         '&:hover': {
-                                            color: 'primary.main',
+                                            color: 'primary.main'
                                         }
                                     },
-                                    { textDecoration: 'none', transition:"all 0.3s" }
+                                    { textDecoration: 'none', transition: 'all 0.3s' }
                                 ]}
                             >
                                 {title}
