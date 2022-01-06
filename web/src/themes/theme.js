@@ -1,7 +1,8 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { orange, green } from '@mui/material/colors';
+import { orange, cyan, lightGreen, purple, yellow,green } from '@mui/material/colors';
 
-const primaryColor = orange['600'];
+const primaryColor = orange['700'];
+// const primaryColor = green['A400'];
 
 const headerFont = 'Orbitron, monospace';
 const bodyFont = 'Source Code Pro, monospace';
@@ -31,7 +32,7 @@ let theme = createTheme({
         body1: { fontFamily: bodyFont, fontWeight: 400 },
         body2: { fontFamily: bodyFont },
         button: {
-            fontFamily: bodyFont
+            fontFamily: headerFont
         }
     }
 });

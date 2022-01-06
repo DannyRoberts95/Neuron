@@ -16,7 +16,6 @@ export default function HeroPost(props) {
             sx={{ color: theme.palette.primary.main }}
             LinkComponent={Link}
             href={`/post/${slug.current}`}
-            component="div"
             {...others}
         >
             <Box width={'100%'} position="relative">
@@ -48,8 +47,6 @@ export default function HeroPost(props) {
                                 variant={'h2'}
                                 gutterBottom
                                 color="inherit"
-                                component={Link}
-                                href={`/post/${slug.current}`}
                                 sx={[
                                     {
                                         '&:hover': {

@@ -51,7 +51,7 @@ const Index = (props) => {
                 <Fade in={displayList} onExited={() => setDisplayList(true)} mountOnEnter>
                     <Box component="span">
                         <PostList
-                            posts={posts.slice(1, posts.length)}
+                            posts={posts}
                             categoryFilters={[allCategories[tabValue]]}
                         />
                     </Box>
