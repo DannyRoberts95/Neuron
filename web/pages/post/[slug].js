@@ -16,9 +16,8 @@ import { format } from 'date-fns';
 import HeroImage from '@/components/HeroImage';
 import SocialButtons from '@/components/SocialShareButtons';
 import { useTheme } from '@emotion/react';
-import RecentPostList from '@/components/RecentPostList';
+import PostList from "@/components/PostList"
 import Meta from '@/components/PageMeta';
-import { AccessTime } from '@mui/icons-material';
 import CreatedDate from '@/components/CreatedDate';
 
 function urlFor(source) {
@@ -26,6 +25,10 @@ function urlFor(source) {
 }
 
 const Post = (props) => {
+    console.log(props);
+
+    const { recentPosts, post } = props;
+
     const {
         title = 'Missing title',
         name = 'Missing name',
@@ -36,7 +39,7 @@ const Post = (props) => {
         mainImage,
         mainImageCaption = ' ',
         body = []
-    } = props;
+    } = post;
 
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
@@ -45,71 +48,93 @@ const Post = (props) => {
         <PageBaseContainer>
             <Meta title={title} description={description} keywords={categories.join(' ')} />
             <HeroImage image={mainImage} caption={mainImageCaption} />
-            <CenteredContent maxWidth="md" sx={{ padding: 2 }}>
-                <Fade in timeout={1000}>
-                    <Box>
-                        <Stack
-                            display="flex"
-                            direction="row"
-                            justifyContent="space-between"
-                            alignitems="center"
-                        >
-                            <CreatedDate date={publishedAt} />
-                            <TagStack tags={categories} />
-                        </Stack>
+            <CenteredContent maxWidth="lg" sx={{ padding: 2 }}>
+                <Box>
+                    <Stack
+                        display="flex"
+                        direction="row"
+                        justifyContent="space-between"
+                        alignitems="center"
+                    >
+                        <CreatedDate date={publishedAt} />
+                        <TagStack tags={categories} />
+                    </Stack>
 
-                        <Typography variant="h1" gutterBottom>
-                            {title}
-                        </Typography>
+                    <Typography variant="h1" gutterBottom>
+                        {title}
+                    </Typography>
 
-                        <Stack
-                            display="flex"
-                            direction={isSm ? 'column' : 'row'}
-                            spacing={2}
-                            justifyContent="space-between"
-                            alignitems="flex-end"
-                        >
-                            <Author author={name} src={urlFor(authorImage).width(50).url()} />
-                            <SocialButtons />
-                        </Stack>
+                    <Stack
+                        display="flex"
+                        direction={isSm ? 'column' : 'row'}
+                        spacing={2}
+                        justifyContent="space-between"
+                        alignitems="flex-end"
+                    >
+                        <Author author={name} src={urlFor(authorImage).width(50).url()} />
+                        <SocialButtons />
+                    </Stack>
 
-                        <Box my={2}>
-                            <Divider />
-                        </Box>
-
-                        <StyledBlockedContent body={body} />
-
-                        <Box mb={2}>
-                            <SocialButtons />
-                        </Box>
-                        <Box my={2}>
-                            <Divider />
-                        </Box>
-
-                        <RecentPostList />
+                    <Box my={2}>
+                        <Divider />
                     </Box>
-                </Fade>
+
+                    <StyledBlockedContent body={body} />
+
+                    <Box mb={2}>
+                        <SocialButtons />
+                    </Box>
+
+                    <Box my={2}>
+                        <Divider />
+                    </Box>
+
+                    <PostList posts={recentPosts} />
+                </Box>
             </CenteredContent>
         </PageBaseContainer>
     );
 };
 
-const query = groq`*[_type == "post" && slug.current == $slug][0]{
-  title,
-  "name": author->name,
-  "categories": categories[]->title,
-  "authorImage": author->image,
-  "mainImage": mainImage=>image,
-  description,
-  mainImageCaption,
-  publishedAt,
-  _updatedAt,
-  body
-}`;
-
 Post.getInitialProps = async function (context) {
     const { slug = '' } = context.query;
-    return await client.fetch(query, { slug });
+
+    const post = await client.fetch(
+        groq`*[_type == "post" && slug.current == $slug][0]{
+        title,
+        "name": author->name,
+        "categories": categories[]->title,
+        "authorImage": author->image,
+        "mainImage": mainImage=>image,
+        description,
+        mainImageCaption,
+        publishedAt,
+        _updatedAt,
+        body
+      }`,
+        { slug }
+    );
+
+    const cats = post.categories.map(item=>`title == "${item}"`).join(" || ")
+
+
+    const recentPosts = await client.fetch(
+        groq`*[_type == 'post'&&
+        publishedAt < now() &&
+       *[_type == "category" &&
+       ${cats}][0]._id in categories[]._ref]{
+           title,
+           slug,
+           "categories": categories[]->title,
+           "mainImage": mainImage=>image,
+           publishedAt,
+       }|order(publishedAt desc)[0...4]`
+    );
+
+    return {
+        post,
+        recentPosts
+    };
 };
 
 Post.Layout = Layout;

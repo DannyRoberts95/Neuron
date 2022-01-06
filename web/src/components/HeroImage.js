@@ -56,7 +56,7 @@ function HeroImage(props) {
                     img={image[0]}
                     objectFit={'cover'}
                     layout="fill"
-                    quality={open ? 100 : 75}
+                    quality={100}
                 />
             </Box>
             {interactive && (

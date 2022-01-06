@@ -14,7 +14,6 @@ export default function SocialButtons(props) {
     if (typeof window == 'undefined') return null;
     const { url = window.location.href, ...others } = props;
     const hashTags = '#neuron';
-    console.log(others);
     return (
         <Stack {...others}>
             <Stack direction="row" spacing={3}>
