@@ -33,6 +33,7 @@ const PostCard = (props) => {
                 <Card
                     elevation={1}
                     sx={{
+                        width:"100%",
                         transition: 'all 0.1s',
                         color: hovered ? 'primary.main' : 'inherit'
                     }}

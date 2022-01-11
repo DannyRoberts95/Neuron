@@ -89,7 +89,7 @@ const Post = (props) => {
                         <Divider />
                     </Box>
 
-                    <PostList posts={recentPosts} />
+                    <PostList posts={recentPosts} sx={{p:0}} />
                 </Box>
             </CenteredContent>
         </PageBaseContainer>
