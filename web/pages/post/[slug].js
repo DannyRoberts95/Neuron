@@ -25,8 +25,6 @@ function urlFor(source) {
 }
 
 const Post = (props) => {
-    console.log(props);
-
     const { recentPosts, post } = props;
 
     const {
