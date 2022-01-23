@@ -1,11 +1,20 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import theme from 'src/themes/theme';
-
+import Meta from '@/components/PageMeta';
 class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
+                {/* <HeadSEO
+                    metaTitle={'Neuron'}
+                    siteTitle={'Neuron'}
+                    metaDesc={
+                        'Welcome, The dumping ground for all things creative, useless, pointless, idiotic and technological.'
+                    }
+                    shareDesc={`The dumping ground for all things creative, useless, pointless, idiotic and technological`}
+                /> */}
+
                 <Head>
                     <meta charSet="utf-8" />
                     <meta name="theme-color" content={theme.palette.primary.main} />
@@ -15,31 +24,15 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Source+Code+Pro:wght@300;700&display=swap"
                         rel="stylesheet"
                     />
-                    <link rel="shortcut icon" href="/favicon.png"></link>
-                    <link rel="apple-touch-icon" href="../public/favicon.png" />
-                    {/* Twitter */}
-                    {/* <meta
-                        name="twitter:image"
-                        content="https://aikido-finance.s3-eu-west-1.amazonaws.com/public/openGraphPreview.jpg"
-                    /> */}
-                    <meta name="twitter:title" content="Neuron" />
-                    <meta
-                        name="twitter:description"
-                        content="The dumping ground for all things creative, useless, pointless, idiotic and technological,"
-                    />
-                    <meta name="twitter:site" content="@Neuron" />
-                    <meta name="twitter:creator" content="@Neuron" />
-                    {/* OG meta tags */}
-                    {/* <meta property="og:type" content="website"></meta>
-                    <meta
-                        property="og:image"
-                        content="https://aikido-finance.s3-eu-west-1.amazonaws.com/public/openGraphPreview.jpg"></meta>
-                    <meta property="og:image:type" content="image/jpg"></meta>
-                    <meta property="og:image:width" content="1200"></meta>
-                    <meta property="og:image:height" content="627"></meta>
-                    <meta property="og:image:alt" content="Aikido Company Logo"></meta> */}
                 </Head>
-                <body style={{ margin: 0, backgroundColor: theme.palette.background.default, color:theme.palette.text.primary }}>
+
+                <body
+                    style={{
+                        margin: 0,
+                        backgroundColor: theme.palette.background.default,
+                        color: theme.palette.text.primary
+                    }}
+                >
                     <Main />
                     <NextScript />
                 </body>

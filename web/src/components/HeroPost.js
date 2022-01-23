@@ -29,6 +29,7 @@ export default function HeroPost(props) {
                         elevation={4}
                         sx={{
                             position: 'absolute',
+                            color: 'white',
                             bottom: 0,
                             backgroundColor: 'rgb(18, 18, 18,0.66)'
                         }}
@@ -49,6 +50,7 @@ export default function HeroPost(props) {
                                 color="inherit"
                                 sx={[
                                     {
+                                        color: 'inherit',
                                         '&:hover': {
                                             color: 'primary.main'
                                         }

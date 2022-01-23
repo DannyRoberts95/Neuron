@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Box } from '@mui/system';
-import ApplicationBar from '@/components/Menu';
+import AppBarMenu from '@/components/AppBarMenu';
 
 export default function Layout(props) {
     const { children } = props;
     return (
         <Box>
-            <ApplicationBar />
+            <AppBarMenu />
             {children}
         </Box>
     );

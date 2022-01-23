@@ -31,7 +31,7 @@ const PostCard = (props) => {
         slug && (
             <Link naked href={`/post/${slug.current}`}>
                 <Card
-                    elevation={1}
+                    elevation={0}
                     sx={{
                         transition: 'all 0.1s',
                         color: hovered ? 'primary.main' : 'inherit'

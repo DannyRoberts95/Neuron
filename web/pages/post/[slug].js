@@ -16,7 +16,7 @@ import { format } from 'date-fns';
 import HeroImage from '@/components/HeroImage';
 import SocialButtons from '@/components/SocialShareButtons';
 import { useTheme } from '@emotion/react';
-import PostList from "@/components/PostList"
+import PostList from '@/components/PostList';
 import Meta from '@/components/PageMeta';
 import CreatedDate from '@/components/CreatedDate';
 
@@ -87,7 +87,7 @@ const Post = (props) => {
                         <Divider />
                     </Box>
 
-                    <PostList posts={recentPosts} sx={{p:0}} />
+                    <PostList posts={recentPosts} sx={{ p: 0 }} />
                 </Box>
             </CenteredContent>
         </PageBaseContainer>
@@ -113,8 +113,7 @@ Post.getInitialProps = async function (context) {
         { slug }
     );
 
-    const cats = post.categories.map(item=>`title == "${item}"`).join(" || ")
-
+    const cats = post.categories.map((item) => `title == "${item}"`).join(' || ');
 
     const recentPosts = await client.fetch(
         groq`*[_type == 'post'&&

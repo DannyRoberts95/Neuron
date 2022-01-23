@@ -49,15 +49,11 @@ function HeroImage(props) {
                 height="100%"
                 sx={{
                     height: open ? '100vh' : '66vh',
-                    transition: 'all 0.5s ease-out'
+                    transition: 'all 0.5s ease-out',
+                    zIndex: open ? theme.zIndex.modal : 0,
                 }}
             >
-                <SanityNextImage
-                    img={image[0]}
-                    objectFit={'cover'}
-                    layout="fill"
-                    quality={100}
-                />
+                <SanityNextImage img={image[0]} objectFit={'cover'} layout="fill" quality={100} />
             </Box>
             {interactive && (
                 <Hidden smDown>
@@ -66,7 +62,7 @@ function HeroImage(props) {
                             position: 'absolute',
                             bottom: 1,
                             left: 1,
-                            color: '#fff',
+                            color: '#fff'
                         }}
                         spacing={1}
                         alignItems="center"

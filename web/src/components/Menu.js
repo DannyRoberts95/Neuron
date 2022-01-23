@@ -9,6 +9,7 @@ import Link from '@/components/Link';
 import links from '@/Consts/SITE_LINKS';
 import SocialButtons from './SocialShareButtons';
 import { useRouter } from 'next/router';
+import CenteredContent from './CenteredContent';
 
 export default function ApplicationBar() {
     const theme = useTheme();
@@ -29,7 +30,39 @@ export default function ApplicationBar() {
 
     const fabMenuIcon = (
         <Fragment>
-            <Fab
+            <CenteredContent>
+                <Box display="flex" width="100%" justifyContent={"space-between"}>
+                    <Box
+                        sx={{
+                            // position: 'fixed',
+                            // zIndex: theme.zIndex.modal + 1,
+                            // left: 16,
+                            // ...(isSm ? { bottom: theme.spacing(2) } : { top: theme.spacing(2) }),
+                            width: 150
+                        }}
+                    >
+                        <img src="/assets/branding/name_white.svg" width={'100%'} height={'100%'} />
+                    </Box>
+
+                    <Fab
+                        size="small"
+                        sx={{
+                            borderRadius: '50%',
+                            // position: 'fixed',
+                            // zIndex: theme.zIndex.modal + 1,
+                            // right: 16,
+                            ...(isSm ? { bottom: theme.spacing(2) } : { top: theme.spacing(2) })
+                        }}
+                        onClick={menuOpen ? handleClose : handleOpen}
+                        color="primary"
+                        aria-label="menu"
+                    >
+                        {menuOpen ? <Close /> : <MenuIcon />}
+                    </Fab>
+                </Box>
+            </CenteredContent>
+
+            {/* <Fab
                 size="small"
                 sx={{
                     borderRadius: '50%',
@@ -42,32 +75,20 @@ export default function ApplicationBar() {
                 color="primary"
                 aria-label="back">
                 <ArrowBack />
-            </Fab>
-            <Fab
-                size="small"
-                sx={{
-                    borderRadius: '50%',
-                    position: 'fixed',
-                    zIndex: theme.zIndex.modal + 1,
-                    right: 16,
-                    ...(isSm ? { bottom: theme.spacing(2) } : { top: theme.spacing(2) })
-                }}
-                onClick={menuOpen ? handleClose : handleOpen}
-                color="primary"
-                aria-label="menu">
-                {menuOpen ? <Close /> : <MenuIcon />}
-            </Fab>
+            </Fab> */}
 
             <Drawer
                 anchor={'right'}
                 open={menuOpen}
                 transitionDuration={drawerTransitionTime}
-                onClose={handleClose}>
+                onClose={handleClose}
+            >
                 <Box
                     sx={{ width: '100vw', height: '100vh', backgroundColor: 'background.default' }}
                     display="flex"
                     alignItems="center"
-                    justifyContent="center">
+                    justifyContent="center"
+                >
                     <Stack justifyContent="center" spacing={4}>
                         {links.map((link, i) => (
                             <Grow
@@ -76,14 +97,16 @@ export default function ApplicationBar() {
                                 timeout={Math.min(
                                     drawerTransitionTime + i * drawerTransitionTime,
                                     1250
-                                )}>
+                                )}
+                            >
                                 <Typography
                                     sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
                                     variant={'subtitle1'}
                                     align="center"
                                     component={Link}
                                     onClick={handleClose}
-                                    href={link.href}>
+                                    href={link.href}
+                                >
                                     {link.title}
                                 </Typography>
                             </Grow>
