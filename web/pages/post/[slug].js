@@ -44,7 +44,7 @@ const Post = (props) => {
 
     return (
         <PageBaseContainer>
-            <Meta title={title} description={description} keywords={categories.join(' ')} />
+            <Meta title={title} desc={description} keywords={categories.join(' ')} />
             <HeroImage image={mainImage} caption={mainImageCaption} />
             <CenteredContent maxWidth="lg" sx={{ padding: 2 }}>
                 <Box>

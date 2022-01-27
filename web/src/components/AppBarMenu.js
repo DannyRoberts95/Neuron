@@ -8,7 +8,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
-import { Button, Drawer, Fab, Grow, IconButton, Stack, useMediaQuery } from '@mui/material';
+import { Button, Drawer, Fab, Grow, IconButton, Stack, useMediaQuery, Fade } from '@mui/material';
 import CenteredContent from './CenteredContent';
 import SocialButtons from './SocialShareButtons';
 import { useTheme } from '@mui/material';
@@ -21,13 +21,14 @@ function HideOnScroll(props) {
     const { children } = props;
 
     const trigger = useScrollTrigger({
+        threshold: 0
         // target: window ? window() : undefined
     });
 
     return (
-        <Slide appear={false} direction="down" in={!trigger}>
+        <Fade appear={false} in={!trigger}>
             {children}
-        </Slide>
+        </Fade>
     );
 }
 
@@ -51,35 +52,38 @@ export default function HideAppBar(props) {
     const LogoLink = ({ width = '125px', ...others }) => {
         return (
             <Box width={width} component={Link} href="/" {...others}>
-                <img width="100%" height="100%" src="/assets/branding/name_black.svg" />
-                {/* <Typography color="textPrimary" variant="h5" sx={{textDecoration:"none"}}>Neuron</Typography> */}
+                <img width="100%" height="100%" src="/assets/branding/name_black.svg" alt="logo" />
             </Box>
         );
     };
 
     return (
         <React.Fragment>
-            <AppBar
-                elevation={4}
-                sx={{ backgroundColor: 'background.paper' }}
-            >
-                <Toolbar>
-                <CenteredContent>
-                    <Box display="flex" width="100%" justifyContent={'space-between'} alignItems={"center"}>
-                        <LogoLink />
+            <HideOnScroll>
+                <AppBar elevation={0} sx={{ backgroundColor: 'background.paper' }}>
+                    {/* <Toolbar> */}
+                        <CenteredContent>
+                            <Box
+                                display="flex"
+                                width="100%"
+                                justifyContent={'space-between'}
+                                alignItems={'center'}
+                            >
+                                <LogoLink />
 
-                        <IconButton
-                            size="large"
-                            onClick={menuOpen ? handleClose : handleOpen}
-                            aria-label="menu"
-                        >
-                            {menuOpen ? <Close /> : <Menu />}
-                        </IconButton>
-                    </Box>
-                </CenteredContent>
-                </Toolbar>
-            </AppBar>
-            <Toolbar />
+                                <IconButton
+                                    size="large"
+                                    onClick={menuOpen ? handleClose : handleOpen}
+                                    aria-label="menu"
+                                >
+                                    {menuOpen ? <Close /> : <Menu />}
+                                </IconButton>
+                            </Box>
+                        </CenteredContent>
+                    {/* </Toolbar> */}
+                </AppBar>
+            </HideOnScroll>
+            {/* <Toolbar /> */}
 
             <Drawer
                 anchor={'right'}
@@ -90,9 +94,8 @@ export default function HideAppBar(props) {
                 <Box
                     sx={{
                         positon: 'relative',
-                        width: '100vw',
-                        height: '100vh',
-                        backgroundColor: 'background.default'
+                        width: isSm ? '100vw' : '340px',
+                        height: '100vh'
                     }}
                     display="flex"
                     alignItems="center"
@@ -105,33 +108,39 @@ export default function HideAppBar(props) {
                         <Close />
                     </IconButton>
 
-                    <Stack justifyContent="center" spacing={4}>
-                        <LogoLink width="200px" onClick={handleClose} />
+                    <SocialButtons sx={{ position: 'absolute', bottom: 16 }} />
 
-                        {links.map((link, i) => (
-                            <Grow
-                                key={link.title + i}
-                                in={menuOpen}
-                                timeout={Math.min(
-                                    drawerTransitionTime + i * drawerTransitionTime,
-                                    1250
-                                )}
-                            >
-                                <Typography
-                                    sx={{ textDecoration: 'none', textTransform: 'uppercase' }}
-                                    variant={'h6'}
-                                    align="center"
-                                    component={Link}
-                                    onClick={handleClose}
-                                    href={link.href}
+                    <Fade in={menuOpen}>
+                        <Stack justifyContent="center" spacing={4}>
+
+                            <LogoLink width={150} />
+
+                            {links.map((link, i) => (
+                                <Grow
+                                    key={link.title + i}
+                                    in={menuOpen}
+                                    timeout={Math.min(
+                                        drawerTransitionTime + i * drawerTransitionTime,
+                                        1250
+                                    )}
                                 >
-                                    {link.title}
-                                </Typography>
-                            </Grow>
-                        ))}
-
-                        <SocialButtons sx={{ pt: 5 }} />
-                    </Stack>
+                                    <Typography
+                                        sx={{
+                                            textDecoration: 'none',
+                                            textTransform: 'uppercase'
+                                        }}
+                                        variant={'body1'}
+                                        component={Link}
+                                        align="center"
+                                        onClick={handleClose}
+                                        href={link.href}
+                                    >
+                                        {link.title}
+                                    </Typography>
+                                </Grow>
+                            ))}
+                        </Stack>
+                    </Fade>
                 </Box>
             </Drawer>
         </React.Fragment>

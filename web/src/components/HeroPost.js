@@ -24,9 +24,6 @@ export default function HeroPost(props) {
                 <Fade in>
                     <Box
                         width="100%"
-                        component={Paper}
-                        square
-                        elevation={4}
                         sx={{
                             position: 'absolute',
                             color: 'white',

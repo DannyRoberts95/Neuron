@@ -37,10 +37,11 @@ function HeroImage(props) {
         <Box
             sx={{
                 width: '100%',
-                transition: 'max-height 0.5s ease-out',
+                transition: 'all 0.5s ease-out',
                 maxHeight: open ? '100vh' : '66vh',
                 overflow: 'hidden',
                 position: 'relative',
+                zIndex: open ? theme.zIndex.modal : 0,
                 ...sx
             }}
             {...others}
@@ -50,19 +51,25 @@ function HeroImage(props) {
                 sx={{
                     height: open ? '100vh' : '66vh',
                     transition: 'all 0.5s ease-out',
-                    zIndex: open ? theme.zIndex.modal : 0,
                 }}
             >
-                <SanityNextImage img={image[0]} objectFit={'cover'} layout="fill" quality={100} />
+                <SanityNextImage
+                    img={image[0]}
+                    objectFit={'cover'}
+                    layout="fill"
+                    quality={100}
+                    alt={caption || 'article cover image'}
+                />
             </Box>
             {interactive && (
                 <Hidden smDown>
                     <Stack
                         sx={{
                             position: 'absolute',
-                            bottom: 1,
-                            left: 1,
-                            color: '#fff'
+                            bottom: 8,
+                            left: 8,
+                            color: '#fff',
+                            backgroundColor: 'rgba(0,0,0,0.5)'
                         }}
                         spacing={1}
                         alignItems="center"
@@ -74,7 +81,7 @@ function HeroImage(props) {
                         >
                             {open ? <Close /> : <CameraAlt />}
                         </IconButton>
-                        <Fade in={Boolean(open && caption)}>
+                        <Fade in={Boolean(open && caption)} unmountOnExit>
                             <Typography variant="body1" sx={{ pr: 2 }}>
                                 {caption}
                             </Typography>
