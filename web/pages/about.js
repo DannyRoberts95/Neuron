@@ -39,7 +39,7 @@ const AboutPage = (props) => {
     };
 
     const authorTabs = (
-        <Tabs value={tabValue} centered sx={{borderBottom:"1px solid text.secondary"}}>
+        <Tabs value={tabValue} centered sx={{ borderBottom: '1px solid text.secondary' }}>
             {authors.map((author, i) => (
                 <Tab
                     key={author.name + 'tab'}
@@ -64,7 +64,8 @@ const AboutPage = (props) => {
                 color="primary"
                 size="large"
                 sx={{ position: 'fixed', top: '50%', left: theme.spacing(1) }}
-                onClick={handlePrev}>
+                onClick={handlePrev}
+            >
                 <NavigateBefore />
             </IconButton>
 
@@ -72,14 +73,15 @@ const AboutPage = (props) => {
                 size="large"
                 color="primary"
                 sx={{ position: 'fixed', top: '50%', right: theme.spacing(1) }}
-                onClick={handleNext}>
+                onClick={handleNext}
+            >
                 <NavigateNext />
             </IconButton>
         </Box>
     );
 
     return (
-        <PageBaseContainer sx={{ p: 2 }}>
+        <PageBaseContainer sx={{ p: 2, mt: 4 }}>
             {tabButtons}
             <CenteredContent maxWidth="sm">
                 {authorTabs}

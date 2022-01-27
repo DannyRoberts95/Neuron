@@ -71,7 +71,7 @@ export default function HideAppBar(props) {
                                 justifyContent={'space-between'}
                                 alignItems={'center'}
                             >
-                                <LogoLink />
+                                <LogoLink sx={{px:2}}/>
 
                                 <IconButton
                                     size="large"
