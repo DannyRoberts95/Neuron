@@ -17,6 +17,8 @@ import { Close, Menu } from '@mui/icons-material';
 import links from '@/Consts/SITE_LINKS';
 import Link from '@/components/Link';
 
+import LogoLink from "src/components/LogoLink"
+
 function HideOnScroll(props) {
     const { children } = props;
 

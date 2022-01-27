@@ -17,7 +17,10 @@ export default function SocialButtons(props) {
     return (
         <Stack {...others}>
             <Stack direction="row" spacing={3}>
-                <TwitterShareButton url={url} hashtag={hashTags}>
+                <TwitterShareButton
+                    url={url}
+                    hashtag={hashTags}
+                >
                     <Twitter />
                 </TwitterShareButton>
                 <FacebookShareButton url={url} hashtag={hashTags}>
