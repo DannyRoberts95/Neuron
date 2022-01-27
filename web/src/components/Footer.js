@@ -54,7 +54,7 @@ export default function Footer(props) {
                                 textTransform: 'uppercase'
                             }}
                             align="center"
-                            variant={'body1'}
+                            variant={'body2'}
                             component={Link}
                             href={link.href}
                         >
