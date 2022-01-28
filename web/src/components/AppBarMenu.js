@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { Close, Menu } from '@mui/icons-material';
 import links from '@/Consts/SITE_LINKS';
 import Link from '@/components/Link';
+import Modal from "@/components/Modal"
 
 import LogoLink from "src/components/LogoLink"
 
@@ -33,6 +34,7 @@ function HideOnScroll(props) {
         </Fade>
     );
 }
+
 
 export default function HideAppBar(props) {
     const theme = useTheme();
@@ -73,6 +75,7 @@ export default function HideAppBar(props) {
                                     {menuOpen ? <Close /> : <Menu />}
                                 </IconButton>
                             </Box>
+                            {/* <Modal/> */}
                         </CenteredContent>
                     {/* </Toolbar> */}
                 </AppBar>
