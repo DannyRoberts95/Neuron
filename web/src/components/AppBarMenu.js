@@ -107,8 +107,8 @@ export default function HideAppBar(props) {
                     <Fade in={menuOpen}>
                         <Stack justifyContent="center" spacing={4}>
 
-                            <LogoLink width={150} />
 
+                            <LogoLink width={150} />
                             {links.map((link, i) => (
                                 <Grow
                                     key={link.title + i}

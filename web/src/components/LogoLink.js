@@ -5,7 +5,7 @@ import Link from './Link';
 
 const LogoLink = ({ width = '125px', ...others }) => {
     return (
-        <Box width={width} {...others}>
+        <Box  {...others}>
             {/* <img
                 width={width}
                 src="/assets/branding/name_black.svg"
@@ -24,7 +24,7 @@ const LogoLink = ({ width = '125px', ...others }) => {
                     '&:hover': { color: 'primary.main' }
                 }}
             >
-                N3UR0N
+                n3UR//0N
             </Typography>
         </Box>
     );
