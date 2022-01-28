@@ -51,14 +51,6 @@ export default function HideAppBar(props) {
 
     const drawerTransitionTime = 400;
 
-    const LogoLink = ({ width = '125px', ...others }) => {
-        return (
-            <Box width={width} component={Link} href="/" {...others}>
-                <img width="100%" height="100%" src="/assets/branding/name_black.svg" alt="logo" />
-            </Box>
-        );
-    };
-
     return (
         <React.Fragment>
             <HideOnScroll>

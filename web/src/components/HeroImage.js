@@ -52,6 +52,9 @@ function HeroImage(props) {
                     height: open ? '100vh' : '66vh',
                     transition: 'all 0.5s ease-out'
                 }}
+                onClick={() => {
+                    open && setOpen(false);
+                }}
             >
                 <SanityNextImage
                     img={image[0]}

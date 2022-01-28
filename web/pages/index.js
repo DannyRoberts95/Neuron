@@ -41,7 +41,7 @@ const Index = (props) => {
         <PageBaseContainer>
             <HeroPost post={posts[0]} />
             <Container maxWidth="lg" sx={{ p: 0 }}>
-                <Box sx={{ mx: 2, my: 1 }}>
+                <Box sx={{ mx: 2, my: 5, }}>
                     <Tabs value={tabValue} variant="scrollable" scrollButtons="auto">
                         {tabs}
                     </Tabs>
@@ -49,7 +49,7 @@ const Index = (props) => {
                 </Box>
 
                 <Fade in={displayList} onExited={() => setDisplayList(true)} mountOnEnter>
-                    <Box component="span">
+                    <Box component="span" >
                         <PostList posts={posts} categoryFilters={[allCategories[tabValue]]} />
                     </Box>
                 </Fade>
