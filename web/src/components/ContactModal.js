@@ -1,15 +1,16 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Phone } from '@mui/icons-material';
-import { IconButton, Stack, TextField } from '@mui/material';
+import { CloseFullscreenSharp, Phone } from '@mui/icons-material';
+import { IconButton, Stack, TextField, Typography } from '@mui/material';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const validationSchema = yup.object({
     name: yup.string('Enter your name').required('Name silly...'),
@@ -17,11 +18,41 @@ const validationSchema = yup.object({
         .string('Enter your email')
         .email('Enter a valid email')
         .required('How are we suppose to write back?'),
-        message: yup.string('Write something?').required('Write something...')
+    message: yup.string('Write something?').required('Write something...')
 });
 export default function MaxWidthDialog() {
-    const [open, setOpen] = React.useState(false);
-    const [fullWidth, setFullWidth] = React.useState(true);
+    const [open, setOpen] = useState(false);
+    const [fullWidth, setFullWidth] = useState(true);
+
+    const [isSending, setIsSending] = useState(false);
+    const [feedback, setFeedback] = useState('');
+
+    const handleSubmit = (values) => {
+        setFeedback('Sending...');
+        setIsSending(true);
+
+        axios
+            .get(`/api/send-mail`, {
+                params: { ...values }
+            })
+            .then((res) => {
+                console.log(res);
+                if (res.status == 200) {
+                    setFeedback(`Message sent. We'll be in touch`);
+                    setTimeout(() => {
+                        setOpen(false);
+                        formik.resetForm();
+                    }, 2500);
+                } else {
+                    setFeedback(res.error);
+                }
+                setIsSending(false);
+            })
+            .catch((err) => {
+                setIsSending(false);
+                console.log(err);
+            });
+    };
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -35,12 +66,11 @@ export default function MaxWidthDialog() {
         initialValues: {
             name: '',
             email: '',
+            subject: '',
             message: ''
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
-        }
+        onSubmit: (values) => handleSubmit(values)
     });
 
     return (
@@ -52,7 +82,7 @@ export default function MaxWidthDialog() {
                 <form onSubmit={formik.handleSubmit}>
                     <DialogTitle>Contact</DialogTitle>
                     <DialogContent>
-                        <Stack direction="column" spacing={4}>
+                        <Stack direction="column" spacing={4} mb={2}>
                             <TextField
                                 fullWidth
                                 id="name"
@@ -77,6 +107,17 @@ export default function MaxWidthDialog() {
                             />
                             <TextField
                                 fullWidth
+                                id="subject"
+                                name="subject"
+                                label="Subject"
+                                variant="standard"
+                                value={formik.values.subject}
+                                onChange={formik.handleChange}
+                                error={formik.touched.subject && Boolean(formik.errors.subject)}
+                                helperText={formik.touched.subject && formik.errors.subject}
+                            />
+                            <TextField
+                                fullWidth
                                 id="message"
                                 name="message"
                                 label="Message"
@@ -89,10 +130,11 @@ export default function MaxWidthDialog() {
                                 helperText={formik.touched.message && formik.errors.message}
                             />
                         </Stack>
+                        <Typography variant="body2">{feedback}</Typography>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Close</Button>
-                        <Button color="primary" variant="contained" type="submit">
+                        <Button color="primary" variant="contained" type="submit" disabled={isSending}>
                             Send
                         </Button>
                     </DialogActions>

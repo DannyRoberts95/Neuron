@@ -2,6 +2,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { orange, cyan, lightGreen, purple, yellow,green } from '@mui/material/colors';
 
 const primaryColor = orange['700'];
+
 // const primaryColor = green['A400'];
 
 const headerFont = 'Orbitron, monospace';
@@ -11,7 +12,6 @@ let defaultTheme = createTheme();
 
 let theme = createTheme({
     palette: {
-        // mode: 'dark',
         primary: { main: primaryColor }
     },
     breakpoints: {

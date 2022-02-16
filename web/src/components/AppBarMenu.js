@@ -16,9 +16,9 @@ import { useRouter } from 'next/router';
 import { Close, Menu } from '@mui/icons-material';
 import links from '@/Consts/SITE_LINKS';
 import Link from '@/components/Link';
-import Modal from "@/components/Modal"
+import Modal from '@/components/ContactModal';
 
-import LogoLink from "src/components/LogoLink"
+import LogoLink from 'src/components/LogoLink';
 
 function HideOnScroll(props) {
     const { children } = props;
@@ -35,8 +35,7 @@ function HideOnScroll(props) {
     );
 }
 
-
-export default function HideAppBar(props) {
+export default function AppBarMenu(props) {
     const theme = useTheme();
     const router = useRouter();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
@@ -58,25 +57,24 @@ export default function HideAppBar(props) {
             <HideOnScroll>
                 <AppBar elevation={0} sx={{ backgroundColor: 'background.paper' }}>
                     {/* <Toolbar> */}
-                        <CenteredContent>
-                            <Box
-                                display="flex"
-                                width="100%"
-                                justifyContent={'space-between'}
-                                alignItems={'center'}
-                            >
-                                <LogoLink sx={{px:2}}/>
+                    <CenteredContent>
+                        <Box
+                            display="flex"
+                            width="100%"
+                            justifyContent={'space-between'}
+                            alignItems={'center'}
+                        >
+                            <LogoLink sx={{ px: 2 }} />
 
-                                <IconButton
-                                    size="large"
-                                    onClick={menuOpen ? handleClose : handleOpen}
-                                    aria-label="menu"
-                                >
-                                    {menuOpen ? <Close /> : <Menu />}
-                                </IconButton>
-                            </Box>
-                            {/* <Modal/> */}
-                        </CenteredContent>
+                            <IconButton
+                                size="large"
+                                onClick={menuOpen ? handleClose : handleOpen}
+                                aria-label="menu"
+                            >
+                                {menuOpen ? <Close /> : <Menu />}
+                            </IconButton>
+                        </Box>
+                    </CenteredContent>
                     {/* </Toolbar> */}
                 </AppBar>
             </HideOnScroll>
@@ -109,8 +107,6 @@ export default function HideAppBar(props) {
 
                     <Fade in={menuOpen}>
                         <Stack justifyContent="center" spacing={4}>
-
-
                             <LogoLink width={150} />
                             {links.map((link, i) => (
                                 <Grow
@@ -139,6 +135,7 @@ export default function HideAppBar(props) {
                         </Stack>
                     </Fade>
                 </Box>
+
             </Drawer>
         </React.Fragment>
     );
